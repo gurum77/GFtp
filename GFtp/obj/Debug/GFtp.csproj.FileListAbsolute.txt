@@ -1,0 +1,9 @@
+D:\MyTest\C#\GFtp\GFtp\bin\Debug\GFtp.exe.config
+D:\MyTest\C#\GFtp\GFtp\bin\Debug\GFtp.exe
+D:\MyTest\C#\GFtp\GFtp\bin\Debug\GFtp.pdb
+D:\MyTest\C#\GFtp\GFtp\obj\Debug\GFtp.csprojResolveAssemblyReference.cache
+D:\MyTest\C#\GFtp\GFtp\obj\Debug\GFtp.Properties.Resources.resources
+D:\MyTest\C#\GFtp\GFtp\obj\Debug\GFtp.csproj.GenerateResource.Cache
+D:\MyTest\C#\GFtp\GFtp\obj\Debug\GFtp.exe
+D:\MyTest\C#\GFtp\GFtp\obj\Debug\GFtp.pdb
+D:\MyTest\C#\GFtp\GFtp\obj\Debug\GFtp.Form1.resources
