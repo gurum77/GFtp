@@ -212,7 +212,7 @@
             this.Controls.Add(this.selectDirectoyButton);
             this.Font = new System.Drawing.Font("돋움", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.Name = "Form1";
-            this.Text = "GFtp v1.1";
+            this.Text = "GFtp v1.2";
             this.Load += new System.EventHandler(this.Form1_Load);
             ((System.ComponentModel.ISupportInitialize)(this.fileGridView)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.ftpFileGridView)).EndInit();

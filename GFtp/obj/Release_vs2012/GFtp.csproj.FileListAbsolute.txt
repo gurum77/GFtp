@@ -1,0 +1,8 @@
+E:\GitHub\GFtp\GFtp\bin\Release_vs2012\GFtp.exe.config
+E:\GitHub\GFtp\GFtp\bin\Release_vs2012\GFtp.exe
+E:\GitHub\GFtp\GFtp\bin\Release_vs2012\GFtp.pdb
+E:\GitHub\GFtp\GFtp\obj\Release_vs2012\GFtp.Form1.resources
+E:\GitHub\GFtp\GFtp\obj\Release_vs2012\GFtp.Properties.Resources.resources
+E:\GitHub\GFtp\GFtp\obj\Release_vs2012\GFtp.csproj.GenerateResource.Cache
+E:\GitHub\GFtp\GFtp\obj\Release_vs2012\GFtp.exe
+E:\GitHub\GFtp\GFtp\obj\Release_vs2012\GFtp.pdb

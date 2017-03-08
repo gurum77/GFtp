@@ -29,12 +29,6 @@ namespace GFtp
             ftpFileGridView.DoubleClick += ftpFileGridView_DoubleClick;
         }
         
-        // Check if address is root ftp address
-        bool IsRootFtpAddress(string address)
-        {
-            return false;
-        }
-
         void ftpFileGridView_DoubleClick(object sender, EventArgs e)
         {
             if (sender != ftpFileGridView)
@@ -52,14 +46,24 @@ namespace GFtp
                 string nextPath = ftpFileGridView.Rows[cell.RowIndex].Cells[0].Value.ToString();
                 if(nextPath == "..")
                 {
-                    if (IsRootFtpAddress(_ftpAddress))
-                        return;
-
+                    string addressOrg = _ftpAddress;
                     int lastIdx = _ftpAddress.LastIndexOf('/');
                     
                     if (lastIdx > -1)
                     {
                         _ftpAddress = _ftpAddress.Substring(0, lastIdx);
+                    }
+
+                    // check possible convert from string to Uri
+                    try
+                    {
+                        Uri ftpUri = new Uri(_ftpAddress);
+                    }
+                    catch
+                    {
+                        // if impossible convert then return
+                        _ftpAddress = addressOrg;
+                        return;
                     }
                 }
                 else
@@ -340,7 +344,7 @@ namespace GFtp
 
                     // increment progress bar
                     progressBar.PerformStep();
-
+                    
                     // upload
                     if (IsUpload)
                     {
