@@ -12,26 +12,91 @@ using System.Net;
 
 namespace GFtp
 {
-   
-
     public partial class Form1 : Form
     {
-        public Form1()
-        {
-            InitializeComponent();
-        }
-
         // When the Form1 is loaded, display directory list to directoryTreeView control.
         string _currentDirectory = @"c:\";
         string _ftpAddress = @"ftp://ftp.novell.com";
+        string _ftpRootAddress = @"ftp://ftp.novell.com";   // The ftp address When ftp is connected, 
         string _id = "";
         string _password = "";
+  
+        public Form1()
+        {
+            InitializeComponent();
+
+            fileGridView.DoubleClick += FileGridView_DoubleClick;
+            ftpFileGridView.DoubleClick += ftpFileGridView_DoubleClick;
+        }
+        
+        // Check if address is root ftp address
+        bool IsRootFtpAddress(string address)
+        {
+            return false;
+        }
+
+        void ftpFileGridView_DoubleClick(object sender, EventArgs e)
+        {
+            if (sender != ftpFileGridView)
+                return;
+
+            DataGridViewCell cell = ftpFileGridView.CurrentCell;
+            // Check clicked cell is file or folder
+            bool isFolder = true;
+            if (ftpFileGridView.Rows[cell.RowIndex].Cells[2].Value.ToString() == "File")
+                isFolder = false;
+
+            // if clicked cell is folder then move current directory to sub directory
+            if (isFolder)
+            {
+                string nextPath = ftpFileGridView.Rows[cell.RowIndex].Cells[0].Value.ToString();
+                if(nextPath == "..")
+                {
+                    if (IsRootFtpAddress(_ftpAddress))
+                        return;
+
+                    int lastIdx = _ftpAddress.LastIndexOf('/');
+                    
+                    if (lastIdx > -1)
+                    {
+                        _ftpAddress = _ftpAddress.Substring(0, lastIdx);
+                    }
+                }
+                else
+                {
+                    _ftpAddress = _ftpAddress + "/" + nextPath;
+                }
+                
+                ftpAddressTextBox.Text = _ftpAddress;
+                RefreshFtpFileGridViewWithCurrentInput();
+            }        
+        }
+        
+        
+        private void FileGridView_DoubleClick(object sender, EventArgs e)
+        {
+            if (sender != fileGridView)
+                return;
+
+            DataGridViewCell cell = fileGridView.CurrentCell;
+            // Check clicked cell is file or folder
+            bool isFolder = true;
+            if (fileGridView.Rows[cell.RowIndex].Cells[2].Value.ToString() == "File")
+                isFolder = false;
+
+            // if clicked cell is folder then move current directory to sub directory
+            if(isFolder)
+            {
+                _currentDirectory   = Path.Combine(_currentDirectory, fileGridView.Rows[cell.RowIndex].Cells[0].Value.ToString());
+                RefreshFileGridViewOfCurrentDirectory();
+            }         
+        }
 
         private void Form1_Load(object sender, EventArgs e)
         {
             DefaultFieldValue();
             DisplayDefaultFieldValue();
-            RefreshFileListBoxOfCurrentDirectory();
+            RefreshFileGridViewOfCurrentDirectory();
         }
 
         // Set default field values.
@@ -50,20 +115,46 @@ namespace GFtp
 
         // Refresh FileTreeView
         // Display all file in the current directory.
-        void RefreshFileListBoxOfCurrentDirectory()
+        void RefreshFileGridViewOfCurrentDirectory()
         {
             // Get all file list  directory list of my pc;
             DirectoryInfo di = new DirectoryInfo(_currentDirectory);
 
             // Get all sub directory
+            DirectoryInfo[] subDiArray = di.GetDirectories();
+           
+            // Get all files
             FileInfo[] fiArray = di.GetFiles("*.*");
-            GridFileInfo[] gridFileInfos = new GridFileInfo[fiArray.Length];
+
+            GridFileInfo[] gridFileInfos = new GridFileInfo[1 + subDiArray.Length + fiArray.Length];
             int idx = 0;
+
+            // Add super directory
+            {
+                gridFileInfos[idx] = new GridFileInfo();
+                gridFileInfos[idx].Name = "..";
+                gridFileInfos[idx].Size = 0;
+                gridFileInfos[idx].IsFolder = true;
+                idx++;
+            }
+            
+            // Add directory infos
+            foreach (DirectoryInfo subDi in subDiArray)
+            {
+                gridFileInfos[idx] = new GridFileInfo();
+                gridFileInfos[idx].Name = subDi.Name;
+                gridFileInfos[idx].Size = 0;
+                gridFileInfos[idx].IsFolder = true;
+                idx++;
+            }
+         
+            // Add file infos
             foreach(FileInfo fi in fiArray)
             {
                 gridFileInfos[idx] = new GridFileInfo();
                 gridFileInfos[idx].Name = fi.Name;
                 gridFileInfos[idx].Size = fi.Length;
+                gridFileInfos[idx].IsFolder = false;
                 idx++;
             }
             // Display file to grid view
@@ -81,15 +172,17 @@ namespace GFtp
 
             // initialize file tree view control
             gridView.RowCount = fileinfos.Length;
-            gridView.ColumnCount = 2;
+            gridView.ColumnCount = 3;
 
             // set column's width
             gridView.Columns[0].Width = 200;
-            gridView.Columns[1].Width = 150;
+            gridView.Columns[1].Width = 100;
+            gridView.Columns[2].Width = 50;
 
             // set header titles
             gridView.Columns[0].HeaderText = "Name";
             gridView.Columns[1].HeaderText = "Size";
+            gridView.Columns[2].HeaderText = "Type";
 
             // Change column's sortmode to NotSortable for DataGridViewSelectionMode.FullColumnSelect
             for (int i = 0; i < gridView.ColumnCount; ++i)
@@ -103,12 +196,27 @@ namespace GFtp
             foreach (GridFileInfo f in fileinfos)
             {
                 gridView.Rows[rowIndex].Height = 24;
-                gridView.Rows[rowIndex].Cells[0].Value = f?.Name;
-                gridView.Rows[rowIndex].Cells[1].Value = f?.Size;
-
+                
+                if (f != null)
+                {
+                    gridView.Rows[rowIndex].Cells[0].Value = f.Name;
+                    if (f.IsFolder == false)
+                    {
+                        gridView.Rows[rowIndex].Cells[1].Value = f.Size;
+                        gridView.Rows[rowIndex].Cells[2].Value = "File";
+                    }
+                    else
+                    {
+                        gridView.Rows[rowIndex].Cells[1].Value = "";
+                        gridView.Rows[rowIndex].Cells[2].Value = "Folder";
+                    }
+                }
+                
+                
                 rowIndex++;
             }
         }
+
         // When the select director button clicked, select current directory and then refresh file tree view
         private void selectDirectoyButton_Click(object sender, EventArgs e)
         {
@@ -119,12 +227,7 @@ namespace GFtp
                 return;
             _currentDirectory = dlg.SelectedPath;
 
-            RefreshFileListBoxOfCurrentDirectory();
-        }
-
-        private void ftpFileListView_SelectedIndexChanged(object sender, EventArgs e)
-        {
-
+            RefreshFileGridViewOfCurrentDirectory();
         }
 
         private void ftpAddressTextBox_KeyPress(object sender, KeyPressEventArgs e)
@@ -132,7 +235,7 @@ namespace GFtp
             if (e.KeyChar != Convert.ToChar(Keys.Enter))
                 return;
 
-            RefreshFtpFileListBoxWithCurrentInput();
+            RefreshFtpFileGridViewWithCurrentInput();
         }
 
         // Refresh ftp file list box
@@ -154,23 +257,40 @@ namespace GFtp
             ftpReq.Method = WebRequestMethods.Ftp.ListDirectoryDetails;
 
             FtpWebResponse ftpRes = (FtpWebResponse)ftpReq.GetResponse();
-
             StreamReader reader = new StreamReader(ftpRes.GetResponseStream(), System.Text.Encoding.Default);
 
             string str = reader.ReadToEnd();
             string[] fileInfos = str.Split(new string[] { "\r\n" }, StringSplitOptions.RemoveEmptyEntries);
 
-
-            GridFileInfo[] gridFileInfos = new GridFileInfo[fileInfos.Length];
+            GridFileInfo[] gridFileInfos = new GridFileInfo[1 + fileInfos.Length];
             int idx = 0;
-            foreach(string infoString in fileInfos)
+
+            // Add super directory
+            {
+                gridFileInfos[idx] = new GridFileInfo();
+                gridFileInfos[idx].Size = 0;
+                gridFileInfos[idx].Name = "..";
+                gridFileInfos[idx].IsFolder = true;
+                idx++;
+            }
+
+            // Get all files and folders
+            foreach (string infoString in fileInfos)
             {
                 string[] infoArray = infoString.Split(new string[] { " " }, StringSplitOptions.RemoveEmptyEntries);
                 gridFileInfos[idx] = new GridFileInfo();
                 gridFileInfos[idx].Size = long.Parse(infoArray[4]);
                 gridFileInfos[idx].Name = infoArray[8];
+                if (infoArray[0][0] == 'd')
+                {
+                    gridFileInfos[idx].IsFolder = true;
+                }
                 idx++;
             }
+
+            
+            // sort from folers to files
+            Array.Sort(gridFileInfos);
 
             ftpRes.Close();
             return gridFileInfos;
@@ -196,6 +316,14 @@ namespace GFtp
         // Translate files from local to ftp or from ftp to local
         private bool TranslateFiles(string[] files, bool IsUpload)
         {
+            // Set a progressbar
+            progressBar.Style = ProgressBarStyle.Continuous;
+            progressBar.Minimum = 0;
+            progressBar.Maximum = files.Length;
+            progressBar.Step = 1;
+            progressBar.Value = 0;
+   
+
             // connect ftp
             WebClient wc = new WebClient { Proxy = null };
             wc.BaseAddress = _ftpAddress;
@@ -209,6 +337,10 @@ namespace GFtp
                 foreach (string filename in files)
                 {
                     string pathName = Path.Combine(_currentDirectory, filename);
+
+                    // increment progress bar
+                    progressBar.PerformStep();
+
                     // upload
                     if (IsUpload)
                     {
@@ -257,12 +389,12 @@ namespace GFtp
         // Connect to ftp
         private void connectionButton_Click(object sender, EventArgs e)
         {
-            RefreshFtpFileListBoxWithCurrentInput();
+            RefreshFtpFileGridViewWithCurrentInput();
           
         }
 
         // Refresh ftp file list box with current input (ftp address, id, password)
-        private void RefreshFtpFileListBoxWithCurrentInput()
+        private void RefreshFtpFileGridViewWithCurrentInput()
         {
             // ftp 주소
             _ftpAddress = ftpAddressTextBox.Text;
@@ -283,7 +415,7 @@ namespace GFtp
 
             if (TranslateFiles(files, false))
             {
-                RefreshFileListBoxOfCurrentDirectory();
+                RefreshFileGridViewOfCurrentDirectory();
                 MessageBox.Show("Completed.");
             }
             else
@@ -291,11 +423,5 @@ namespace GFtp
                 MessageBox.Show("Failded Download.");
             }
         }
-    }
-
-    public class GridFileInfo
-    {
-        public string Name { get; set; }
-        public long Size { get; set; }
     }
 }

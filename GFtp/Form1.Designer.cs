@@ -41,6 +41,7 @@
             this.fromFtpButton = new System.Windows.Forms.Button();
             this.fileGridView = new System.Windows.Forms.DataGridView();
             this.ftpFileGridView = new System.Windows.Forms.DataGridView();
+            this.progressBar = new System.Windows.Forms.ProgressBar();
             ((System.ComponentModel.ISupportInitialize)(this.fileGridView)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.ftpFileGridView)).BeginInit();
             this.SuspendLayout();
@@ -65,7 +66,7 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.ftpAddressTextBox.Location = new System.Drawing.Point(563, 70);
             this.ftpAddressTextBox.Name = "ftpAddressTextBox";
-            this.ftpAddressTextBox.Size = new System.Drawing.Size(303, 25);
+            this.ftpAddressTextBox.Size = new System.Drawing.Size(327, 21);
             this.ftpAddressTextBox.TabIndex = 3;
             this.ftpAddressTextBox.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.ftpAddressTextBox_KeyPress);
             // 
@@ -75,7 +76,7 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.idTextBox.Location = new System.Drawing.Point(563, 8);
             this.idTextBox.Name = "idTextBox";
-            this.idTextBox.Size = new System.Drawing.Size(421, 25);
+            this.idTextBox.Size = new System.Drawing.Size(445, 21);
             this.idTextBox.TabIndex = 4;
             // 
             // passwordTextBox
@@ -84,7 +85,7 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.passwordTextBox.Location = new System.Drawing.Point(563, 39);
             this.passwordTextBox.Name = "passwordTextBox";
-            this.passwordTextBox.Size = new System.Drawing.Size(421, 25);
+            this.passwordTextBox.Size = new System.Drawing.Size(445, 21);
             this.passwordTextBox.TabIndex = 5;
             // 
             // label1
@@ -92,7 +93,7 @@
             this.label1.AutoSize = true;
             this.label1.Location = new System.Drawing.Point(471, 75);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(82, 15);
+            this.label1.Size = new System.Drawing.Size(72, 12);
             this.label1.TabIndex = 6;
             this.label1.Text = "Ftp address";
             // 
@@ -101,7 +102,7 @@
             this.label2.AutoSize = true;
             this.label2.Location = new System.Drawing.Point(471, 11);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(20, 15);
+            this.label2.Size = new System.Drawing.Size(16, 12);
             this.label2.TabIndex = 7;
             this.label2.Text = "ID";
             // 
@@ -110,14 +111,14 @@
             this.label3.AutoSize = true;
             this.label3.Location = new System.Drawing.Point(471, 42);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(70, 15);
+            this.label3.Size = new System.Drawing.Size(62, 12);
             this.label3.TabIndex = 8;
             this.label3.Text = "Password";
             // 
             // toFtpButton
             // 
             this.toFtpButton.Image = ((System.Drawing.Image)(resources.GetObject("toFtpButton.Image")));
-            this.toFtpButton.Location = new System.Drawing.Point(374, 163);
+            this.toFtpButton.Location = new System.Drawing.Point(447, 108);
             this.toFtpButton.Name = "toFtpButton";
             this.toFtpButton.Size = new System.Drawing.Size(94, 84);
             this.toFtpButton.TabIndex = 10;
@@ -129,7 +130,7 @@
             this.connectionButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.connectionButton.Image = ((System.Drawing.Image)(resources.GetObject("connectionButton.Image")));
             this.connectionButton.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.connectionButton.Location = new System.Drawing.Point(872, 69);
+            this.connectionButton.Location = new System.Drawing.Point(896, 69);
             this.connectionButton.Name = "connectionButton";
             this.connectionButton.Size = new System.Drawing.Size(112, 29);
             this.connectionButton.TabIndex = 12;
@@ -141,7 +142,7 @@
             // fromFtpButton
             // 
             this.fromFtpButton.Image = ((System.Drawing.Image)(resources.GetObject("fromFtpButton.Image")));
-            this.fromFtpButton.Location = new System.Drawing.Point(374, 253);
+            this.fromFtpButton.Location = new System.Drawing.Point(447, 198);
             this.fromFtpButton.Name = "fromFtpButton";
             this.fromFtpButton.Size = new System.Drawing.Size(94, 84);
             this.fromFtpButton.TabIndex = 13;
@@ -154,12 +155,14 @@
             | System.Windows.Forms.AnchorStyles.Left)));
             this.fileGridView.ColumnHeadersHeight = 24;
             this.fileGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
+            this.fileGridView.EditMode = System.Windows.Forms.DataGridViewEditMode.EditProgrammatically;
+            this.fileGridView.GridColor = System.Drawing.SystemColors.ControlLight;
             this.fileGridView.Location = new System.Drawing.Point(12, 80);
             this.fileGridView.Name = "fileGridView";
             this.fileGridView.RowTemplate.Height = 27;
             this.fileGridView.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.CellSelect;
             this.fileGridView.ShowEditingIcon = false;
-            this.fileGridView.Size = new System.Drawing.Size(356, 373);
+            this.fileGridView.Size = new System.Drawing.Size(429, 440);
             this.fileGridView.TabIndex = 15;
             // 
             // ftpFileGridView
@@ -169,19 +172,32 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.ftpFileGridView.ColumnHeadersHeight = 24;
             this.ftpFileGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
-            this.ftpFileGridView.Location = new System.Drawing.Point(474, 108);
+            this.ftpFileGridView.EditMode = System.Windows.Forms.DataGridViewEditMode.EditProgrammatically;
+            this.ftpFileGridView.GridColor = System.Drawing.SystemColors.ControlLight;
+            this.ftpFileGridView.Location = new System.Drawing.Point(544, 108);
             this.ftpFileGridView.Name = "ftpFileGridView";
             this.ftpFileGridView.RowTemplate.Height = 27;
             this.ftpFileGridView.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.CellSelect;
             this.ftpFileGridView.ShowEditingIcon = false;
-            this.ftpFileGridView.Size = new System.Drawing.Size(510, 345);
+            this.ftpFileGridView.Size = new System.Drawing.Size(464, 412);
             this.ftpFileGridView.TabIndex = 16;
+            // 
+            // progressBar
+            // 
+            this.progressBar.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.progressBar.Location = new System.Drawing.Point(13, 526);
+            this.progressBar.Name = "progressBar";
+            this.progressBar.Size = new System.Drawing.Size(995, 23);
+            this.progressBar.Step = 1;
+            this.progressBar.TabIndex = 17;
             // 
             // Form1
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 15F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(996, 465);
+            this.ClientSize = new System.Drawing.Size(1020, 557);
+            this.Controls.Add(this.progressBar);
             this.Controls.Add(this.ftpFileGridView);
             this.Controls.Add(this.fileGridView);
             this.Controls.Add(this.fromFtpButton);
@@ -194,7 +210,7 @@
             this.Controls.Add(this.idTextBox);
             this.Controls.Add(this.ftpAddressTextBox);
             this.Controls.Add(this.selectDirectoyButton);
-            this.Font = new System.Drawing.Font("Dotum", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.Font = new System.Drawing.Font("돋움", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.Name = "Form1";
             this.Text = "GFtp v1.1";
             this.Load += new System.EventHandler(this.Form1_Load);
@@ -218,6 +234,7 @@
         private System.Windows.Forms.Button fromFtpButton;
         private System.Windows.Forms.DataGridView fileGridView;
         private System.Windows.Forms.DataGridView ftpFileGridView;
+        private System.Windows.Forms.ProgressBar progressBar;
     }
 }
 

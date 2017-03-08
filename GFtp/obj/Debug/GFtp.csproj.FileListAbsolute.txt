@@ -7,3 +7,12 @@ D:\MyTest\C#\GFtp\GFtp\obj\Debug\GFtp.csproj.GenerateResource.Cache
 D:\MyTest\C#\GFtp\GFtp\obj\Debug\GFtp.exe
 D:\MyTest\C#\GFtp\GFtp\obj\Debug\GFtp.pdb
 D:\MyTest\C#\GFtp\GFtp\obj\Debug\GFtp.Form1.resources
+E:\GitHub\GFtp\GFtp\bin\Debug\GFtp.exe.config
+E:\GitHub\GFtp\GFtp\obj\Debug\GFtp.exe
+E:\GitHub\GFtp\GFtp\obj\Debug\GFtp.pdb
+E:\GitHub\GFtp\GFtp\obj\Debug\GFtp.csprojResolveAssemblyReference.cache
+E:\GitHub\GFtp\GFtp\obj\Debug\GFtp.Form1.resources
+E:\GitHub\GFtp\GFtp\obj\Debug\GFtp.Properties.Resources.resources
+E:\GitHub\GFtp\GFtp\obj\Debug\GFtp.csproj.GenerateResource.Cache
+E:\GitHub\GFtp\GFtp\bin\Debug\GFtp.exe
+E:\GitHub\GFtp\GFtp\bin\Debug\GFtp.pdb
