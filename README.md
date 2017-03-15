@@ -9,3 +9,4 @@ Demo :
 
  1. GFtp v1.0 : https://www.youtube.com/watch?v=Lzls51fWUT4
  2. GFtp v1.1 : https://www.youtube.com/watch?v=q3im5gOV19w
+ 3. GFtp v1.2 : https://youtu.be/mnRWK1MOzco
