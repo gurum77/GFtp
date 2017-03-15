@@ -103,44 +103,56 @@ namespace GFtp
             ftpReq.Timeout = 30000; // 30 seconds timeout
             ftpReq.Method = WebRequestMethods.Ftp.ListDirectoryDetails;
 
-            FtpWebResponse ftpRes = (FtpWebResponse)ftpReq.GetResponse();
-            StreamReader reader = new StreamReader(ftpRes.GetResponseStream(), System.Text.Encoding.Default);
-
-            string str = reader.ReadToEnd();
-            string[] fileInfos = str.Split(new string[] { "\r\n" }, StringSplitOptions.RemoveEmptyEntries);
-
-            GridFileInfo[] gridFileInfos = new GridFileInfo[1 + fileInfos.Length];
-            int idx = 0;
-
-            // Add super directory
+            try
             {
-                gridFileInfos[idx] = new GridFileInfo();
-                gridFileInfos[idx].Size = 0;
-                gridFileInfos[idx].Name = "..";
-                gridFileInfos[idx].IsFolder = true;
-                idx++;
-            }
+                FtpWebResponse ftpRes = (FtpWebResponse)ftpReq.GetResponse();
+                StreamReader reader = new StreamReader(ftpRes.GetResponseStream(), System.Text.Encoding.Default);
 
-            // Get all files and folders
-            foreach (string infoString in fileInfos)
-            {
-                string[] infoArray = infoString.Split(new string[] { " " }, StringSplitOptions.RemoveEmptyEntries);
-                gridFileInfos[idx] = new GridFileInfo();
-                gridFileInfos[idx].Size = long.Parse(infoArray[4]);
-                gridFileInfos[idx].Name = infoArray[8];
-                if (infoArray[0][0] == 'd')
+                string str = reader.ReadToEnd();
+                string[] fileInfos = str.Split(new string[] { "\r\n" }, StringSplitOptions.RemoveEmptyEntries);
+
+                GridFileInfo[] gridFileInfos = new GridFileInfo[1 + fileInfos.Length];
+                int idx = 0;
+
+                // Add super directory
                 {
+                    gridFileInfos[idx] = new GridFileInfo();
+                    gridFileInfos[idx].Size = 0;
+                    gridFileInfos[idx].Name = "..";
                     gridFileInfos[idx].IsFolder = true;
+                    idx++;
                 }
-                idx++;
+
+                // Get all files and folders
+                foreach (string infoString in fileInfos)
+                {
+                    string[] infoArray = infoString.Split(new string[] { " " }, StringSplitOptions.RemoveEmptyEntries);
+                    gridFileInfos[idx] = new GridFileInfo();
+                    gridFileInfos[idx].Size = long.Parse(infoArray[4]);
+                    gridFileInfos[idx].Name = infoArray[8];
+                    if (infoArray[0][0] == 'd')
+                    {
+                        gridFileInfos[idx].IsFolder = true;
+                    }
+                    idx++;
+                }
+
+
+                // sort from folers to files
+                Array.Sort(gridFileInfos);
+
+                ftpRes.Close();
+
+                return gridFileInfos;
             }
+            catch
+            {
+                MessageBox.Show("Can't access to FTP");
 
+                GridFileInfo[] gridFileInfos = new GridFileInfo[0];
 
-            // sort from folers to files
-            Array.Sort(gridFileInfos);
-
-            ftpRes.Close();
-            return gridFileInfos;
+                return gridFileInfos;
+            }
 
         }
     }

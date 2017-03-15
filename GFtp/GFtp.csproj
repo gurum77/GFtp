@@ -70,6 +70,9 @@
     <Reference Include="System.Net.Http" />
     <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml" />
+    <Reference Include="WindowsExplorer">
+      <HintPath>..\Lib\ExplorerTreeSource\Explorer Tree\bin\Release\WindowsExplorer.dll</HintPath>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="FileGridViewHelper.cs" />

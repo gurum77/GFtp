@@ -1,0 +1,8 @@
+C:\Users\hilee_30f5mr0\Downloads\ExplorerTreeSource\Explorer Tree\bin\Debug\WindowsExplorer.dll
+C:\Users\hilee_30f5mr0\Downloads\ExplorerTreeSource\Explorer Tree\bin\Debug\WindowsExplorer.pdb
+C:\Users\hilee_30f5mr0\Downloads\ExplorerTreeSource\Explorer Tree\obj\Debug\WindowsExplorer.csprojResolveAssemblyReference.cache
+C:\Users\hilee_30f5mr0\Downloads\ExplorerTreeSource\Explorer Tree\obj\Debug\WindowsExplorer.ExplorerTree.resources
+C:\Users\hilee_30f5mr0\Downloads\ExplorerTreeSource\Explorer Tree\obj\Debug\WindowsExplorer.frmOptions.resources
+C:\Users\hilee_30f5mr0\Downloads\ExplorerTreeSource\Explorer Tree\obj\Debug\WindowsExplorer.csproj.GenerateResource.Cache
+C:\Users\hilee_30f5mr0\Downloads\ExplorerTreeSource\Explorer Tree\obj\Debug\WindowsExplorer.dll
+C:\Users\hilee_30f5mr0\Downloads\ExplorerTreeSource\Explorer Tree\obj\Debug\WindowsExplorer.pdb

@@ -1,0 +1,12 @@
+C:\Users\hilee_30f5mr0\Downloads\ExplorerTreeSource\Demo Project\obj\Debug\TestExplorer.exe
+C:\Users\hilee_30f5mr0\Downloads\ExplorerTreeSource\Demo Project\obj\Debug\TestExplorer.pdb
+C:\Users\hilee_30f5mr0\Downloads\ExplorerTreeSource\Demo Project\bin\Debug\TestExplorer.exe
+C:\Users\hilee_30f5mr0\Downloads\ExplorerTreeSource\Demo Project\bin\Debug\TestExplorer.pdb
+C:\Users\hilee_30f5mr0\Downloads\ExplorerTreeSource\Demo Project\bin\Debug\stdole.dll
+C:\Users\hilee_30f5mr0\Downloads\ExplorerTreeSource\Demo Project\bin\Debug\WindowsExplorer.dll
+C:\Users\hilee_30f5mr0\Downloads\ExplorerTreeSource\Demo Project\bin\Debug\WindowsExplorer.pdb
+C:\Users\hilee_30f5mr0\Downloads\ExplorerTreeSource\Demo Project\obj\Debug\TestExplorer.csprojResolveAssemblyReference.cache
+C:\Users\hilee_30f5mr0\Downloads\ExplorerTreeSource\Demo Project\obj\Debug\TestExplorer.Form3.resources
+C:\Users\hilee_30f5mr0\Downloads\ExplorerTreeSource\Demo Project\obj\Debug\TestExplorer.frmTest.resources
+C:\Users\hilee_30f5mr0\Downloads\ExplorerTreeSource\Demo Project\obj\Debug\TestExplorer.withoutbars.resources
+C:\Users\hilee_30f5mr0\Downloads\ExplorerTreeSource\Demo Project\obj\Debug\TestExplorer.csproj.GenerateResource.Cache

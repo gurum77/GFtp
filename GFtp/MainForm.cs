@@ -258,5 +258,12 @@ namespace GFtp
                 MessageBox.Show("Failded Download.");
             }
         }
+
+        // Called when changed path on explorerTree
+        private void explorerTree_PathChanged(object sender, EventArgs e)
+        {
+            CurrentDirectory = explorerTree.SelectedPath;
+            RefreshFileGridViewOfCurrentDirectory();
+        }
     }
 }
