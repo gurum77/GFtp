@@ -52,7 +52,7 @@
             // 
             this.ftpAddressTextBox.Location = new System.Drawing.Point(67, 20);
             this.ftpAddressTextBox.Name = "ftpAddressTextBox";
-            this.ftpAddressTextBox.Size = new System.Drawing.Size(332, 21);
+            this.ftpAddressTextBox.Size = new System.Drawing.Size(332, 25);
             this.ftpAddressTextBox.TabIndex = 3;
             this.ftpAddressTextBox.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.ftpAddressTextBox_KeyPress);
             // 
@@ -60,22 +60,23 @@
             // 
             this.idTextBox.Location = new System.Drawing.Point(67, 45);
             this.idTextBox.Name = "idTextBox";
-            this.idTextBox.Size = new System.Drawing.Size(229, 21);
+            this.idTextBox.Size = new System.Drawing.Size(229, 25);
             this.idTextBox.TabIndex = 4;
             // 
             // passwordTextBox
             // 
             this.passwordTextBox.Location = new System.Drawing.Point(67, 71);
             this.passwordTextBox.Name = "passwordTextBox";
-            this.passwordTextBox.Size = new System.Drawing.Size(229, 21);
+            this.passwordTextBox.Size = new System.Drawing.Size(229, 25);
             this.passwordTextBox.TabIndex = 5;
+            this.passwordTextBox.UseSystemPasswordChar = true;
             // 
             // label1
             // 
             this.label1.AutoSize = true;
             this.label1.Location = new System.Drawing.Point(5, 25);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(61, 12);
+            this.label1.Size = new System.Drawing.Size(71, 15);
             this.label1.TabIndex = 6;
             this.label1.Text = "FTP Addr.";
             // 
@@ -84,7 +85,7 @@
             this.label2.AutoSize = true;
             this.label2.Location = new System.Drawing.Point(44, 50);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(16, 12);
+            this.label2.Size = new System.Drawing.Size(20, 15);
             this.label2.TabIndex = 7;
             this.label2.Text = "ID";
             // 
@@ -93,7 +94,7 @@
             this.label3.AutoSize = true;
             this.label3.Location = new System.Drawing.Point(31, 76);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(29, 12);
+            this.label3.Size = new System.Drawing.Size(37, 15);
             this.label3.TabIndex = 8;
             this.label3.Text = "P/W";
             // 
@@ -101,7 +102,7 @@
             // 
             this.toFtpButton.BackColor = System.Drawing.Color.Red;
             this.toFtpButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.toFtpButton.Font = new System.Drawing.Font("돋움", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.toFtpButton.Font = new System.Drawing.Font("Dotum", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.toFtpButton.ForeColor = System.Drawing.Color.White;
             this.toFtpButton.Location = new System.Drawing.Point(420, 287);
             this.toFtpButton.Name = "toFtpButton";
@@ -115,7 +116,7 @@
             // 
             this.connectionButton.BackColor = System.Drawing.Color.Green;
             this.connectionButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.connectionButton.Font = new System.Drawing.Font("돋움", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.connectionButton.Font = new System.Drawing.Font("Dotum", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.connectionButton.ForeColor = System.Drawing.Color.White;
             this.connectionButton.Image = ((System.Drawing.Image)(resources.GetObject("connectionButton.Image")));
             this.connectionButton.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -133,7 +134,7 @@
             this.fromFtpButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.fromFtpButton.BackColor = System.Drawing.Color.Blue;
             this.fromFtpButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.fromFtpButton.Font = new System.Drawing.Font("돋움", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.fromFtpButton.Font = new System.Drawing.Font("Dotum", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.fromFtpButton.ForeColor = System.Drawing.Color.White;
             this.fromFtpButton.Location = new System.Drawing.Point(914, 287);
             this.fromFtpButton.Name = "fromFtpButton";
@@ -194,7 +195,7 @@
             this.explorerTree.BackColor = System.Drawing.Color.White;
             this.explorerTree.Location = new System.Drawing.Point(8, 302);
             this.explorerTree.Name = "explorerTree";
-            this.explorerTree.SelectedPath = "D:\\Program Files (x86)\\Microsoft Visual Studio 11.0\\Common7\\IDE";
+            this.explorerTree.SelectedPath = "C:\\Program Files (x86)\\Microsoft Visual Studio 14.0\\Common7\\IDE";
             this.explorerTree.ShowAddressbar = true;
             this.explorerTree.ShowMyDocuments = true;
             this.explorerTree.ShowMyFavorites = true;
@@ -222,7 +223,7 @@
             // 
             // MainForm
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 12F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(1020, 631);
@@ -233,7 +234,7 @@
             this.Controls.Add(this.toFtpButton);
             this.Controls.Add(this.explorerTree);
             this.Controls.Add(this.groupBox1);
-            this.Font = new System.Drawing.Font("돋움", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.Font = new System.Drawing.Font("Dotum", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.Name = "MainForm";
             this.Text = "GFtp v1.3";
             this.Load += new System.EventHandler(this.Form1_Load);

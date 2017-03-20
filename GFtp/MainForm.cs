@@ -229,6 +229,12 @@ namespace GFtp
         // Connect to ftp
         private void connectionButton_Click(object sender, EventArgs e)
         {
+            // ftp address has to have ftp://
+            // Add a ftp:// if ftp address has no ftp://
+            if(!System.Text.RegularExpressions.Regex.IsMatch("^ftp://", ftpAddressTextBox.Text))
+            {
+                ftpAddressTextBox.Text = "ftp://" + ftpAddressTextBox.Text;
+            }
             RefreshFtpFileGridViewWithCurrentInput();
           
         }

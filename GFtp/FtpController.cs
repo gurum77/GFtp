@@ -64,6 +64,7 @@ namespace GFtp
                 foreach (string filename in files)
                 {
                     string pathName = Path.Combine(CurrentDirectory, filename);
+                    string ftpPathName = FtpAddress + "/" + filename;
 
                     // increment progress bar
                     if(_progressBar != null)
@@ -72,7 +73,7 @@ namespace GFtp
                     // upload
                     if (IsUpload)
                     {
-                        wc.UploadFile(pathName, filename);
+                        wc.UploadFile(ftpPathName, pathName);
                     }
                     // download
                     else
@@ -97,14 +98,14 @@ namespace GFtp
 
         private GridFileInfo[] GetAllGridFileInfosFromFtp(string ftpAddr, string id, string password)
         {
-            Uri ftpUri = new Uri(ftpAddr);
-            FtpWebRequest ftpReq = (FtpWebRequest)WebRequest.Create(ftpUri);
-            ftpReq.Credentials = new NetworkCredential(id, password);
-            ftpReq.Timeout = 30000; // 30 seconds timeout
-            ftpReq.Method = WebRequestMethods.Ftp.ListDirectoryDetails;
-
             try
             {
+                Uri ftpUri = new Uri(ftpAddr);
+                FtpWebRequest ftpReq = (FtpWebRequest)WebRequest.Create(ftpUri);
+                ftpReq.Credentials = new NetworkCredential(id, password);
+                ftpReq.Timeout = 30000; // 30 seconds timeout
+                ftpReq.Method = WebRequestMethods.Ftp.ListDirectoryDetails;
+                            
                 FtpWebResponse ftpRes = (FtpWebResponse)ftpReq.GetResponse();
                 StreamReader reader = new StreamReader(ftpRes.GetResponseStream(), System.Text.Encoding.Default);
 
@@ -147,7 +148,7 @@ namespace GFtp
             }
             catch
             {
-                MessageBox.Show("Can't access to FTP");
+                MessageBox.Show("Can't access to FTP.\n1. Check the FTP address.\n2. Check ID and P/D.");
 
                 GridFileInfo[] gridFileInfos = new GridFileInfo[0];
 
