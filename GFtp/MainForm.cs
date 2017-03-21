@@ -9,12 +9,13 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.IO;
 using System.Net;
+using GFtp;
 
 namespace GFtp
 {
     public partial class MainForm : Form
     {
-        
+        Favorites _favorites = new Favorites();
         FtpController _ftpController = new FtpController();
         private string CurrentDirectory
         {
@@ -41,6 +42,8 @@ namespace GFtp
 
             fileGridView.DoubleClick += FileGridView_DoubleClick;
             ftpFileGridView.DoubleClick += ftpFileGridView_DoubleClick;
+
+            favoritesTreeView.LoadFavoritesItems(_favorites);
         }
         
         void ftpFileGridView_DoubleClick(object sender, EventArgs e)
@@ -231,7 +234,7 @@ namespace GFtp
         {
             // ftp address has to have ftp://
             // Add a ftp:// if ftp address has no ftp://
-            if(!System.Text.RegularExpressions.Regex.IsMatch("^ftp://", ftpAddressTextBox.Text))
+            if(!ftpAddressTextBox.Text.StartsWith("ftp://"))
             {
                 ftpAddressTextBox.Text = "ftp://" + ftpAddressTextBox.Text;
             }
@@ -270,6 +273,22 @@ namespace GFtp
         {
             CurrentDirectory = explorerTree.SelectedPath;
             RefreshFileGridViewOfCurrentDirectory();
+        }
+
+        // Refresh favorites tree view from memory
+        private void RefreshFavoritesTreeView()
+        {
+            favoritesTreeView.RefreshFavoritesItems(_favorites);
+        }
+
+        private void addButton_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void delButton_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

@@ -1,0 +1,10 @@
+<Favorites>
+	<Group name="Default">
+		<Item name="MyHome" address="ftp://127.0.0.1:6000"></Item>
+		<Item name="Novell" address="ftp://ftp.novell.com"></Item>
+	</Group>
+	<Group name="Default2">
+		<Item name="MyHome2" address="ftp://127.0.0.1:6000"></Item>
+		<Item name="Novell2" address="ftp://ftp.novell.com"></Item>
+	</Group>
+</Favorites>

@@ -43,6 +43,9 @@
             this.progressBar = new System.Windows.Forms.ProgressBar();
             this.explorerTree = new WindowsExplorer.ExplorerTree();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.favoritesTreeView = new System.Windows.Forms.TreeView();
+            this.addButton = new System.Windows.Forms.Button();
+            this.delButton = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.fileGridView)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.ftpFileGridView)).BeginInit();
             this.groupBox1.SuspendLayout();
@@ -149,22 +152,24 @@
             this.fileGridView.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.fileGridView.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.fileGridView.ColumnHeadersHeight = 24;
             this.fileGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
             this.fileGridView.EditMode = System.Windows.Forms.DataGridViewEditMode.EditProgrammatically;
             this.fileGridView.GridColor = System.Drawing.SystemColors.ControlLight;
-            this.fileGridView.Location = new System.Drawing.Point(420, 320);
+            this.fileGridView.Location = new System.Drawing.Point(420, 341);
             this.fileGridView.Name = "fileGridView";
             this.fileGridView.RowTemplate.Height = 27;
             this.fileGridView.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.CellSelect;
             this.fileGridView.ShowEditingIcon = false;
-            this.fileGridView.Size = new System.Drawing.Size(588, 299);
+            this.fileGridView.Size = new System.Drawing.Size(588, 278);
             this.fileGridView.TabIndex = 15;
             // 
             // ftpFileGridView
             // 
             this.ftpFileGridView.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.ftpFileGridView.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.ftpFileGridView.ColumnHeadersHeight = 24;
             this.ftpFileGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
             this.ftpFileGridView.EditMode = System.Windows.Forms.DataGridViewEditMode.EditProgrammatically;
@@ -193,7 +198,7 @@
             this.explorerTree.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left)));
             this.explorerTree.BackColor = System.Drawing.Color.White;
-            this.explorerTree.Location = new System.Drawing.Point(8, 302);
+            this.explorerTree.Location = new System.Drawing.Point(8, 320);
             this.explorerTree.Name = "explorerTree";
             this.explorerTree.SelectedPath = "C:\\Program Files (x86)\\Microsoft Visual Studio 14.0\\Common7\\IDE";
             this.explorerTree.ShowAddressbar = true;
@@ -201,7 +206,7 @@
             this.explorerTree.ShowMyFavorites = true;
             this.explorerTree.ShowMyNetwork = true;
             this.explorerTree.ShowToolbar = true;
-            this.explorerTree.Size = new System.Drawing.Size(406, 317);
+            this.explorerTree.Size = new System.Drawing.Size(406, 299);
             this.explorerTree.TabIndex = 18;
             this.explorerTree.PathChanged += new WindowsExplorer.ExplorerTree.PathChangedEventHandler(this.explorerTree_PathChanged);
             // 
@@ -221,12 +226,51 @@
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Site information";
             // 
+            // favoritesTreeView
+            // 
+            this.favoritesTreeView.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.favoritesTreeView.Location = new System.Drawing.Point(13, 124);
+            this.favoritesTreeView.Name = "favoritesTreeView";
+            this.favoritesTreeView.Size = new System.Drawing.Size(401, 157);
+            this.favoritesTreeView.TabIndex = 20;
+            // 
+            // addButton
+            // 
+            this.addButton.BackColor = System.Drawing.Color.Goldenrod;
+            this.addButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.addButton.Font = new System.Drawing.Font("Dotum", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.addButton.ForeColor = System.Drawing.Color.White;
+            this.addButton.Location = new System.Drawing.Point(12, 287);
+            this.addButton.Name = "addButton";
+            this.addButton.Size = new System.Drawing.Size(94, 27);
+            this.addButton.TabIndex = 21;
+            this.addButton.Text = "Add";
+            this.addButton.UseVisualStyleBackColor = false;
+            this.addButton.Click += new System.EventHandler(this.addButton_Click);
+            // 
+            // delButton
+            // 
+            this.delButton.BackColor = System.Drawing.Color.Goldenrod;
+            this.delButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.delButton.Font = new System.Drawing.Font("Dotum", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.delButton.ForeColor = System.Drawing.Color.White;
+            this.delButton.Location = new System.Drawing.Point(112, 287);
+            this.delButton.Name = "delButton";
+            this.delButton.Size = new System.Drawing.Size(94, 27);
+            this.delButton.TabIndex = 22;
+            this.delButton.Text = "Del";
+            this.delButton.UseVisualStyleBackColor = false;
+            this.delButton.Click += new System.EventHandler(this.delButton_Click);
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(1020, 631);
+            this.Controls.Add(this.delButton);
+            this.Controls.Add(this.addButton);
+            this.Controls.Add(this.favoritesTreeView);
             this.Controls.Add(this.progressBar);
             this.Controls.Add(this.ftpFileGridView);
             this.Controls.Add(this.fileGridView);
@@ -236,7 +280,7 @@
             this.Controls.Add(this.groupBox1);
             this.Font = new System.Drawing.Font("Dotum", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.Name = "MainForm";
-            this.Text = "GFtp v1.3";
+            this.Text = "GFtp v1.4";
             this.Load += new System.EventHandler(this.Form1_Load);
             ((System.ComponentModel.ISupportInitialize)(this.fileGridView)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.ftpFileGridView)).EndInit();
@@ -262,6 +306,9 @@
         private System.Windows.Forms.ProgressBar progressBar;
         private WindowsExplorer.ExplorerTree explorerTree;
         private System.Windows.Forms.GroupBox groupBox1;
+        private System.Windows.Forms.TreeView favoritesTreeView;
+        private System.Windows.Forms.Button addButton;
+        private System.Windows.Forms.Button delButton;
     }
 }
 
