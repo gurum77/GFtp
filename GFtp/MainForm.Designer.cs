@@ -46,6 +46,12 @@
             this.favoritesTreeView = new System.Windows.Forms.TreeView();
             this.addButton = new System.Windows.Forms.Button();
             this.delButton = new System.Windows.Forms.Button();
+            this.label4 = new System.Windows.Forms.Label();
+            this.portTextBox = new System.Windows.Forms.TextBox();
+            this.groupLabel = new System.Windows.Forms.Label();
+            this.groupTextBox = new System.Windows.Forms.TextBox();
+            this.nameTextBox = new System.Windows.Forms.TextBox();
+            this.nameLabel = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.fileGridView)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.ftpFileGridView)).BeginInit();
             this.groupBox1.SuspendLayout();
@@ -53,165 +59,116 @@
             // 
             // ftpAddressTextBox
             // 
-            this.ftpAddressTextBox.Location = new System.Drawing.Point(67, 20);
+            resources.ApplyResources(this.ftpAddressTextBox, "ftpAddressTextBox");
             this.ftpAddressTextBox.Name = "ftpAddressTextBox";
-            this.ftpAddressTextBox.Size = new System.Drawing.Size(332, 25);
-            this.ftpAddressTextBox.TabIndex = 3;
             this.ftpAddressTextBox.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.ftpAddressTextBox_KeyPress);
             // 
             // idTextBox
             // 
-            this.idTextBox.Location = new System.Drawing.Point(67, 45);
+            resources.ApplyResources(this.idTextBox, "idTextBox");
             this.idTextBox.Name = "idTextBox";
-            this.idTextBox.Size = new System.Drawing.Size(229, 25);
-            this.idTextBox.TabIndex = 4;
             // 
             // passwordTextBox
             // 
-            this.passwordTextBox.Location = new System.Drawing.Point(67, 71);
+            resources.ApplyResources(this.passwordTextBox, "passwordTextBox");
             this.passwordTextBox.Name = "passwordTextBox";
-            this.passwordTextBox.PasswordChar = '*';
-            this.passwordTextBox.Size = new System.Drawing.Size(229, 25);
-            this.passwordTextBox.TabIndex = 5;
             // 
             // label1
             // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(5, 25);
+            resources.ApplyResources(this.label1, "label1");
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(71, 15);
-            this.label1.TabIndex = 6;
-            this.label1.Text = "FTP Addr.";
             // 
             // label2
             // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(44, 50);
+            resources.ApplyResources(this.label2, "label2");
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(20, 15);
-            this.label2.TabIndex = 7;
-            this.label2.Text = "ID";
             // 
             // label3
             // 
-            this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(31, 76);
+            resources.ApplyResources(this.label3, "label3");
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(37, 15);
-            this.label3.TabIndex = 8;
-            this.label3.Text = "P/W";
             // 
             // toFtpButton
             // 
             this.toFtpButton.BackColor = System.Drawing.Color.Red;
-            this.toFtpButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.toFtpButton.Font = new System.Drawing.Font("Dotum", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            resources.ApplyResources(this.toFtpButton, "toFtpButton");
             this.toFtpButton.ForeColor = System.Drawing.Color.White;
-            this.toFtpButton.Location = new System.Drawing.Point(420, 287);
             this.toFtpButton.Name = "toFtpButton";
-            this.toFtpButton.Size = new System.Drawing.Size(94, 27);
-            this.toFtpButton.TabIndex = 10;
-            this.toFtpButton.Text = "Upload";
             this.toFtpButton.UseVisualStyleBackColor = false;
             this.toFtpButton.Click += new System.EventHandler(this.UploadToFtpButton_Click);
             // 
             // connectionButton
             // 
             this.connectionButton.BackColor = System.Drawing.Color.Green;
-            this.connectionButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.connectionButton.Font = new System.Drawing.Font("Dotum", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            resources.ApplyResources(this.connectionButton, "connectionButton");
             this.connectionButton.ForeColor = System.Drawing.Color.White;
-            this.connectionButton.Image = ((System.Drawing.Image)(resources.GetObject("connectionButton.Image")));
-            this.connectionButton.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.connectionButton.Location = new System.Drawing.Point(302, 69);
             this.connectionButton.Name = "connectionButton";
-            this.connectionButton.Size = new System.Drawing.Size(97, 25);
-            this.connectionButton.TabIndex = 12;
-            this.connectionButton.Text = "Connect";
-            this.connectionButton.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.connectionButton.UseVisualStyleBackColor = false;
             this.connectionButton.Click += new System.EventHandler(this.connectionButton_Click);
             // 
             // fromFtpButton
             // 
-            this.fromFtpButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            resources.ApplyResources(this.fromFtpButton, "fromFtpButton");
             this.fromFtpButton.BackColor = System.Drawing.Color.Blue;
-            this.fromFtpButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.fromFtpButton.Font = new System.Drawing.Font("Dotum", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.fromFtpButton.ForeColor = System.Drawing.Color.White;
-            this.fromFtpButton.Location = new System.Drawing.Point(914, 287);
             this.fromFtpButton.Name = "fromFtpButton";
-            this.fromFtpButton.Size = new System.Drawing.Size(94, 27);
-            this.fromFtpButton.TabIndex = 13;
-            this.fromFtpButton.Text = "Download";
             this.fromFtpButton.UseVisualStyleBackColor = false;
             this.fromFtpButton.Click += new System.EventHandler(this.fromFtpButton_Click);
             // 
             // fileGridView
             // 
-            this.fileGridView.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
+            resources.ApplyResources(this.fileGridView, "fileGridView");
             this.fileGridView.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.fileGridView.ColumnHeadersHeight = 24;
             this.fileGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
             this.fileGridView.EditMode = System.Windows.Forms.DataGridViewEditMode.EditProgrammatically;
             this.fileGridView.GridColor = System.Drawing.SystemColors.ControlLight;
-            this.fileGridView.Location = new System.Drawing.Point(420, 341);
             this.fileGridView.Name = "fileGridView";
             this.fileGridView.RowTemplate.Height = 27;
             this.fileGridView.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.CellSelect;
             this.fileGridView.ShowEditingIcon = false;
-            this.fileGridView.Size = new System.Drawing.Size(588, 278);
-            this.fileGridView.TabIndex = 15;
             // 
             // ftpFileGridView
             // 
-            this.ftpFileGridView.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
+            resources.ApplyResources(this.ftpFileGridView, "ftpFileGridView");
             this.ftpFileGridView.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.ftpFileGridView.ColumnHeadersHeight = 24;
             this.ftpFileGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
             this.ftpFileGridView.EditMode = System.Windows.Forms.DataGridViewEditMode.EditProgrammatically;
             this.ftpFileGridView.GridColor = System.Drawing.SystemColors.ControlLight;
-            this.ftpFileGridView.Location = new System.Drawing.Point(420, 17);
             this.ftpFileGridView.Name = "ftpFileGridView";
             this.ftpFileGridView.RowTemplate.Height = 27;
             this.ftpFileGridView.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.CellSelect;
             this.ftpFileGridView.ShowEditingIcon = false;
-            this.ftpFileGridView.Size = new System.Drawing.Size(588, 264);
-            this.ftpFileGridView.TabIndex = 16;
             // 
             // progressBar
             // 
-            this.progressBar.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
+            resources.ApplyResources(this.progressBar, "progressBar");
             this.progressBar.ForeColor = System.Drawing.Color.Black;
-            this.progressBar.Location = new System.Drawing.Point(520, 287);
             this.progressBar.Name = "progressBar";
-            this.progressBar.Size = new System.Drawing.Size(388, 27);
             this.progressBar.Step = 1;
-            this.progressBar.TabIndex = 17;
             // 
             // explorerTree
             // 
-            this.explorerTree.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left)));
+            resources.ApplyResources(this.explorerTree, "explorerTree");
             this.explorerTree.BackColor = System.Drawing.Color.White;
-            this.explorerTree.Location = new System.Drawing.Point(8, 320);
             this.explorerTree.Name = "explorerTree";
-            this.explorerTree.SelectedPath = "C:\\Program Files (x86)\\Microsoft Visual Studio 14.0\\Common7\\IDE";
+            this.explorerTree.SelectedPath = "D:\\Program Files (x86)\\Microsoft Visual Studio 11.0\\Common7\\IDE";
             this.explorerTree.ShowAddressbar = true;
             this.explorerTree.ShowMyDocuments = true;
             this.explorerTree.ShowMyFavorites = true;
             this.explorerTree.ShowMyNetwork = true;
             this.explorerTree.ShowToolbar = true;
-            this.explorerTree.Size = new System.Drawing.Size(406, 299);
-            this.explorerTree.TabIndex = 18;
             this.explorerTree.PathChanged += new WindowsExplorer.ExplorerTree.PathChangedEventHandler(this.explorerTree_PathChanged);
             // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.delButton);
+            this.groupBox1.Controls.Add(this.nameTextBox);
+            this.groupBox1.Controls.Add(this.addButton);
+            this.groupBox1.Controls.Add(this.nameLabel);
+            this.groupBox1.Controls.Add(this.groupTextBox);
+            this.groupBox1.Controls.Add(this.groupLabel);
+            this.groupBox1.Controls.Add(this.portTextBox);
+            this.groupBox1.Controls.Add(this.label4);
             this.groupBox1.Controls.Add(this.ftpAddressTextBox);
             this.groupBox1.Controls.Add(this.idTextBox);
             this.groupBox1.Controls.Add(this.passwordTextBox);
@@ -219,57 +176,70 @@
             this.groupBox1.Controls.Add(this.connectionButton);
             this.groupBox1.Controls.Add(this.label2);
             this.groupBox1.Controls.Add(this.label3);
-            this.groupBox1.Location = new System.Drawing.Point(8, 12);
+            resources.ApplyResources(this.groupBox1, "groupBox1");
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(406, 106);
-            this.groupBox1.TabIndex = 19;
             this.groupBox1.TabStop = false;
-            this.groupBox1.Text = "Site information";
             // 
             // favoritesTreeView
             // 
             this.favoritesTreeView.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.favoritesTreeView.Location = new System.Drawing.Point(13, 124);
+            resources.ApplyResources(this.favoritesTreeView, "favoritesTreeView");
             this.favoritesTreeView.Name = "favoritesTreeView";
-            this.favoritesTreeView.Size = new System.Drawing.Size(401, 157);
-            this.favoritesTreeView.TabIndex = 20;
+            this.favoritesTreeView.ShowNodeToolTips = true;
             // 
             // addButton
             // 
             this.addButton.BackColor = System.Drawing.Color.Goldenrod;
-            this.addButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.addButton.Font = new System.Drawing.Font("Dotum", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            resources.ApplyResources(this.addButton, "addButton");
             this.addButton.ForeColor = System.Drawing.Color.White;
-            this.addButton.Location = new System.Drawing.Point(12, 287);
             this.addButton.Name = "addButton";
-            this.addButton.Size = new System.Drawing.Size(94, 27);
-            this.addButton.TabIndex = 21;
-            this.addButton.Text = "Add";
             this.addButton.UseVisualStyleBackColor = false;
             this.addButton.Click += new System.EventHandler(this.addButton_Click);
             // 
             // delButton
             // 
             this.delButton.BackColor = System.Drawing.Color.Goldenrod;
-            this.delButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.delButton.Font = new System.Drawing.Font("Dotum", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            resources.ApplyResources(this.delButton, "delButton");
             this.delButton.ForeColor = System.Drawing.Color.White;
-            this.delButton.Location = new System.Drawing.Point(112, 287);
             this.delButton.Name = "delButton";
-            this.delButton.Size = new System.Drawing.Size(94, 27);
-            this.delButton.TabIndex = 22;
-            this.delButton.Text = "Del";
             this.delButton.UseVisualStyleBackColor = false;
             this.delButton.Click += new System.EventHandler(this.delButton_Click);
             // 
+            // label4
+            // 
+            resources.ApplyResources(this.label4, "label4");
+            this.label4.Name = "label4";
+            // 
+            // portTextBox
+            // 
+            resources.ApplyResources(this.portTextBox, "portTextBox");
+            this.portTextBox.Name = "portTextBox";
+            // 
+            // groupLabel
+            // 
+            resources.ApplyResources(this.groupLabel, "groupLabel");
+            this.groupLabel.Name = "groupLabel";
+            // 
+            // groupTextBox
+            // 
+            resources.ApplyResources(this.groupTextBox, "groupTextBox");
+            this.groupTextBox.Name = "groupTextBox";
+            // 
+            // nameTextBox
+            // 
+            resources.ApplyResources(this.nameTextBox, "nameTextBox");
+            this.nameTextBox.Name = "nameTextBox";
+            // 
+            // nameLabel
+            // 
+            resources.ApplyResources(this.nameLabel, "nameLabel");
+            this.nameLabel.Name = "nameLabel";
+            // 
             // MainForm
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 15F);
+            resources.ApplyResources(this, "$this");
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
-            this.ClientSize = new System.Drawing.Size(1020, 631);
-            this.Controls.Add(this.delButton);
-            this.Controls.Add(this.addButton);
             this.Controls.Add(this.favoritesTreeView);
             this.Controls.Add(this.progressBar);
             this.Controls.Add(this.ftpFileGridView);
@@ -278,9 +248,7 @@
             this.Controls.Add(this.toFtpButton);
             this.Controls.Add(this.explorerTree);
             this.Controls.Add(this.groupBox1);
-            this.Font = new System.Drawing.Font("Dotum", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.Name = "MainForm";
-            this.Text = "GFtp v1.4";
             this.Load += new System.EventHandler(this.Form1_Load);
             ((System.ComponentModel.ISupportInitialize)(this.fileGridView)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.ftpFileGridView)).EndInit();
@@ -309,6 +277,12 @@
         private System.Windows.Forms.TreeView favoritesTreeView;
         private System.Windows.Forms.Button addButton;
         private System.Windows.Forms.Button delButton;
+        private System.Windows.Forms.TextBox nameTextBox;
+        private System.Windows.Forms.Label nameLabel;
+        private System.Windows.Forms.TextBox groupTextBox;
+        private System.Windows.Forms.Label groupLabel;
+        private System.Windows.Forms.TextBox portTextBox;
+        private System.Windows.Forms.Label label4;
     }
 }
 
