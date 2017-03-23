@@ -43,15 +43,17 @@
             this.progressBar = new System.Windows.Forms.ProgressBar();
             this.explorerTree = new WindowsExplorer.ExplorerTree();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.favoritesTreeView = new System.Windows.Forms.TreeView();
-            this.addButton = new System.Windows.Forms.Button();
             this.delButton = new System.Windows.Forms.Button();
-            this.label4 = new System.Windows.Forms.Label();
-            this.portTextBox = new System.Windows.Forms.TextBox();
-            this.groupLabel = new System.Windows.Forms.Label();
-            this.groupTextBox = new System.Windows.Forms.TextBox();
             this.nameTextBox = new System.Windows.Forms.TextBox();
+            this.addButton = new System.Windows.Forms.Button();
             this.nameLabel = new System.Windows.Forms.Label();
+            this.groupTextBox = new System.Windows.Forms.TextBox();
+            this.groupLabel = new System.Windows.Forms.Label();
+            this.portTextBox = new System.Windows.Forms.TextBox();
+            this.label4 = new System.Windows.Forms.Label();
+            this.favoritesTreeView = new System.Windows.Forms.TreeView();
+            this.pathTextBox = new System.Windows.Forms.TextBox();
+            this.label5 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.fileGridView)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.ftpFileGridView)).BeginInit();
             this.groupBox1.SuspendLayout();
@@ -151,7 +153,7 @@
             resources.ApplyResources(this.explorerTree, "explorerTree");
             this.explorerTree.BackColor = System.Drawing.Color.White;
             this.explorerTree.Name = "explorerTree";
-            this.explorerTree.SelectedPath = "D:\\Program Files (x86)\\Microsoft Visual Studio 11.0\\Common7\\IDE";
+            this.explorerTree.SelectedPath = "C:\\Program Files (x86)\\Microsoft Visual Studio 14.0\\Common7\\IDE";
             this.explorerTree.ShowAddressbar = true;
             this.explorerTree.ShowMyDocuments = true;
             this.explorerTree.ShowMyFavorites = true;
@@ -161,6 +163,8 @@
             // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.label5);
+            this.groupBox1.Controls.Add(this.pathTextBox);
             this.groupBox1.Controls.Add(this.delButton);
             this.groupBox1.Controls.Add(this.nameTextBox);
             this.groupBox1.Controls.Add(this.addButton);
@@ -180,14 +184,19 @@
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.TabStop = false;
             // 
-            // favoritesTreeView
+            // delButton
             // 
-            this.favoritesTreeView.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            resources.ApplyResources(this.favoritesTreeView, "favoritesTreeView");
-            this.favoritesTreeView.Name = "favoritesTreeView";
-            this.favoritesTreeView.ShowNodeToolTips = true;
-            this.favoritesTreeView.GotFocus += FavoritesTreeView_GotFocus;
-            this.favoritesTreeView.LostFocus += FavoritesTreeView_LostFocus;
+            this.delButton.BackColor = System.Drawing.Color.Goldenrod;
+            resources.ApplyResources(this.delButton, "delButton");
+            this.delButton.ForeColor = System.Drawing.Color.White;
+            this.delButton.Name = "delButton";
+            this.delButton.UseVisualStyleBackColor = false;
+            this.delButton.Click += new System.EventHandler(this.delButton_Click);
+            // 
+            // nameTextBox
+            // 
+            resources.ApplyResources(this.nameTextBox, "nameTextBox");
+            this.nameTextBox.Name = "nameTextBox";
             // 
             // addButton
             // 
@@ -198,44 +207,47 @@
             this.addButton.UseVisualStyleBackColor = false;
             this.addButton.Click += new System.EventHandler(this.addButton_Click);
             // 
-            // delButton
+            // nameLabel
             // 
-            this.delButton.BackColor = System.Drawing.Color.Goldenrod;
-            resources.ApplyResources(this.delButton, "delButton");
-            this.delButton.ForeColor = System.Drawing.Color.White;
-            this.delButton.Name = "delButton";
-            this.delButton.UseVisualStyleBackColor = false;
-            this.delButton.Click += new System.EventHandler(this.delButton_Click);
-            // 
-            // label4
-            // 
-            resources.ApplyResources(this.label4, "label4");
-            this.label4.Name = "label4";
-            // 
-            // portTextBox
-            // 
-            resources.ApplyResources(this.portTextBox, "portTextBox");
-            this.portTextBox.Name = "portTextBox";
-            // 
-            // groupLabel
-            // 
-            resources.ApplyResources(this.groupLabel, "groupLabel");
-            this.groupLabel.Name = "groupLabel";
+            resources.ApplyResources(this.nameLabel, "nameLabel");
+            this.nameLabel.Name = "nameLabel";
             // 
             // groupTextBox
             // 
             resources.ApplyResources(this.groupTextBox, "groupTextBox");
             this.groupTextBox.Name = "groupTextBox";
             // 
-            // nameTextBox
+            // groupLabel
             // 
-            resources.ApplyResources(this.nameTextBox, "nameTextBox");
-            this.nameTextBox.Name = "nameTextBox";
+            resources.ApplyResources(this.groupLabel, "groupLabel");
+            this.groupLabel.Name = "groupLabel";
             // 
-            // nameLabel
+            // portTextBox
             // 
-            resources.ApplyResources(this.nameLabel, "nameLabel");
-            this.nameLabel.Name = "nameLabel";
+            resources.ApplyResources(this.portTextBox, "portTextBox");
+            this.portTextBox.Name = "portTextBox";
+            // 
+            // label4
+            // 
+            resources.ApplyResources(this.label4, "label4");
+            this.label4.Name = "label4";
+            // 
+            // favoritesTreeView
+            // 
+            this.favoritesTreeView.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            resources.ApplyResources(this.favoritesTreeView, "favoritesTreeView");
+            this.favoritesTreeView.Name = "favoritesTreeView";
+            this.favoritesTreeView.ShowNodeToolTips = true;
+            // 
+            // pathTextBox
+            // 
+            resources.ApplyResources(this.pathTextBox, "pathTextBox");
+            this.pathTextBox.Name = "pathTextBox";
+            // 
+            // label5
+            // 
+            resources.ApplyResources(this.label5, "label5");
+            this.label5.Name = "label5";
             // 
             // MainForm
             // 
@@ -314,6 +326,8 @@
         private System.Windows.Forms.Label groupLabel;
         private System.Windows.Forms.TextBox portTextBox;
         private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.TextBox pathTextBox;
     }
 }
 

@@ -13,6 +13,7 @@ namespace GFtp
     {
         //  _ftpAddress  = @"ftp://ftp.novell.com";
         public string FtpAddress { get; set; }
+        public string FtpPath { get; set; }
         public int Port { get; set; }
         public string ID { get; private set; }
         public string Password { get; private set; }

@@ -27,6 +27,11 @@ namespace GFtp
             get { return _ftpController.FtpAddress; }
             set { _ftpController.FtpAddress = value; }
         }
+        private string FtpPath
+        {
+            get { return _ftpController.FtpPath; }
+            set { _ftpController.FtpPath = value; }
+        }
         private string ID
         {
             get { return _ftpController.ID; }
