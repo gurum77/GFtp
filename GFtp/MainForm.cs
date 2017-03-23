@@ -44,6 +44,26 @@ namespace GFtp
             ftpFileGridView.DoubleClick += ftpFileGridView_DoubleClick;
 
             favoritesTreeView.LoadFavoritesItems(_favorites);
+            favoritesTreeView.RefreshFavoritesItems(_favorites);
+            favoritesTreeView.AfterSelect += favoritesTreeView_AfterSelect;
+        }
+
+        // Call when select node of FavoriteTreeView
+        void favoritesTreeView_AfterSelect(object sender, TreeViewEventArgs e)
+        {
+            
+            FavoritesItem item  = favoritesTreeView.GetSelectedFavoritesItem(_favorites);
+            if (item == null)
+                return;
+
+            string groupName = favoritesTreeView.GetSelectedFavoritesItemGroupName(_favorites);
+
+            groupTextBox.Text = groupName;
+            nameTextBox.Text = item.Name;
+            ftpAddressTextBox.Text = item.Address;
+            portTextBox.Text = item.Port;
+            idTextBox.Text = item.ID;
+            passwordTextBox.Text = item.Password;
         }
         
         void ftpFileGridView_DoubleClick(object sender, EventArgs e)
@@ -238,14 +258,19 @@ namespace GFtp
             {
                 ftpAddressTextBox.Text = "ftp://" + ftpAddressTextBox.Text;
             }
+
             RefreshFtpFileGridViewWithCurrentInput();
-          
         }
 
         // Refresh ftp file list box with current input (ftp address, id, password)
         private void RefreshFtpFileGridViewWithCurrentInput()
         {
-            _ftpController.Init(ftpAddressTextBox.Text, idTextBox.Text, passwordTextBox.Text, progressBar);
+            string ftpAddressWithPort = ftpAddressTextBox.Text;
+            if (portTextBox.Text != "")
+            {
+                ftpAddressWithPort = ftpAddressTextBox.Text + ":" + portTextBox.Text + "/";
+            }
+            _ftpController.Init(ftpAddressWithPort, idTextBox.Text, passwordTextBox.Text, progressBar);
 
             // Connet to the ftp and get all file list.
             RefreshFtpFileGridView();
@@ -281,9 +306,20 @@ namespace GFtp
             favoritesTreeView.RefreshFavoritesItems(_favorites);
         }
 
+        // Add current input to favorites
         private void addButton_Click(object sender, EventArgs e)
         {
+            // add a new item
+            FavoritesItem item = new FavoritesItem();
+            item.Name = nameTextBox.Text;
+            item.Address = ftpAddressTextBox.Text;
+            item.Port   = portTextBox.Text;
+            item.ID = idTextBox.Text;
+            item.Password = passwordTextBox.Text;
+            _favorites.AddItem(groupTextBox.Text, item);
 
+            // refresh favorites tree view
+            RefreshFavoritesTreeView();
         }
 
         private void delButton_Click(object sender, EventArgs e)
