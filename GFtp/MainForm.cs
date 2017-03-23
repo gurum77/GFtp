@@ -39,6 +39,7 @@ namespace GFtp
         public MainForm()
         {
             InitializeComponent();
+            InitControl();
 
             fileGridView.DoubleClick += FileGridView_DoubleClick;
             ftpFileGridView.DoubleClick += ftpFileGridView_DoubleClick;
@@ -322,9 +323,12 @@ namespace GFtp
             RefreshFavoritesTreeView();
         }
 
+        // When clicked a delButton, delete current favorite item.
         private void delButton_Click(object sender, EventArgs e)
         {
+            favoritesTreeView.DeleteSelectedFavoritesItem(_favorites);
 
+            RefreshFavoritesTreeView();
         }
     }
 }

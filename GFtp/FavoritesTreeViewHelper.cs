@@ -113,6 +113,19 @@ namespace GFtp
 
             return parentNode.Text;
         }
+
+        // Delete selected favorites item 
+        static public bool DeleteSelectedFavoritesItem(this TreeView treeView, Favorites favorites)
+        {
+            // get selected favorites item
+            var item    = treeView.GetSelectedFavoritesItem(favorites);
+            if (item == null)
+                return false;
+            string group = treeView.GetSelectedFavoritesItemGroupName(favorites);
+            
+            // delete favorites item with item namd and group name
+            return favorites.DelItem(group, item);
+        }
     }
 
   
@@ -148,6 +161,7 @@ namespace GFtp
             return items;
         }
 
+        // Add new item
         public bool AddItem(string groupName, FavoritesItem item)
         {
             List<FavoritesItem> items = GetGroup(groupName);
@@ -157,6 +171,15 @@ namespace GFtp
             items.Add(item);
 
             return true;
+        }
+
+        // Delete a item
+        public bool DelItem(string groupName, FavoritesItem item)
+        {
+            List<FavoritesItem> items = GetGroup(groupName);
+            if (items == null)
+                return false;
+            return items.Remove(item);
         }
     }
 }

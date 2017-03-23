@@ -186,6 +186,8 @@
             resources.ApplyResources(this.favoritesTreeView, "favoritesTreeView");
             this.favoritesTreeView.Name = "favoritesTreeView";
             this.favoritesTreeView.ShowNodeToolTips = true;
+            this.favoritesTreeView.GotFocus += FavoritesTreeView_GotFocus;
+            this.favoritesTreeView.LostFocus += FavoritesTreeView_LostFocus;
             // 
             // addButton
             // 
@@ -256,6 +258,35 @@
             this.groupBox1.PerformLayout();
             this.ResumeLayout(false);
 
+        }
+
+        // When favorites tree view lost focus, initialize all controls state.
+        private void FavoritesTreeView_LostFocus(object sender, System.EventArgs e)
+        {
+            InitControl();
+        }
+
+        // When favorites tree view get focus, initialize all controls state.
+        private void FavoritesTreeView_GotFocus(object sender, System.EventArgs e)
+        {
+            InitControl();
+        }
+
+        // Initialize all control by current state.
+        private void InitControl()
+        {
+            // When favorites tree view is focused, del button is enabled and add button is disabled.
+            // When favorites tree view is not focused, del button is disabled.
+            if(favoritesTreeView.Focused)
+            {
+                delButton.Enabled = true;
+                addButton.Enabled = false;
+            }
+            else
+            {
+                delButton.Enabled = false;
+                addButton.Enabled = true;
+            } 
         }
 
         #endregion
