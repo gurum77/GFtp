@@ -238,6 +238,8 @@
             resources.ApplyResources(this.favoritesTreeView, "favoritesTreeView");
             this.favoritesTreeView.Name = "favoritesTreeView";
             this.favoritesTreeView.ShowNodeToolTips = true;
+            this.favoritesTreeView.GotFocus += FavoritesTreeView_GotFocus;
+            this.favoritesTreeView.LostFocus += FavoritesTreeView_LostFocus;
             // 
             // pathTextBox
             // 
@@ -296,7 +298,7 @@
             }
             else
             {
-                delButton.Enabled = false;
+                delButton.Enabled = true;
                 addButton.Enabled = true;
             } 
         }

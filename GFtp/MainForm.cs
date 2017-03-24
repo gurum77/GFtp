@@ -24,13 +24,18 @@ namespace GFtp
         }
         private string FtpAddress
         {
-            get { return _ftpController.FtpAddress; }
-            set { _ftpController.FtpAddress = value; }
+            get { return _ftpController.Ftp.Address; }
+            set { _ftpController.Ftp.Address = value; }
         }
         private string FtpPath
         {
-            get { return _ftpController.FtpPath; }
-            set { _ftpController.FtpPath = value; }
+            get { return _ftpController.Ftp.Path; }
+            set { _ftpController.Ftp.Path = value; }
+        }
+        private int Port
+        {
+            get { return _ftpController.Ftp.Port; }
+            set { _ftpController.Ftp.Port = value; }
         }
         private string ID
         {
@@ -89,32 +94,25 @@ namespace GFtp
                 string nextPath = ftpFileGridView.Rows[cell.RowIndex].Cells[0].Value.ToString();
                 if(nextPath == "..")
                 {
-                    string addressOrg = FtpAddress;
-                    int lastIdx = FtpAddress.LastIndexOf('/');
-                    
-                    if (lastIdx > -1)
+                    // if can go to super directory, make ftp path to go to super directory.
+                    if(FtpPath != "")
                     {
-                        FtpAddress = FtpAddress.Substring(0, lastIdx);
-                    }
+                        int lastIdx = FtpPath.LastIndexOf('/');
 
-                    // check possible convert from string to Uri
-                    try
-                    {
-                        Uri ftpUri = new Uri(FtpAddress);
+                        if (lastIdx > -1)
+                        {
+                            FtpPath = FtpPath.Substring(0, lastIdx);
+                        }
                     }
-                    catch
-                    {
-                        // if impossible convert then return
-                        FtpAddress = addressOrg;
-                        return;
-                    }
+                  
                 }
                 else
                 {
-                    FtpAddress = FtpAddress + "/" + nextPath;
+                    FtpPath = FtpPath + "/" + nextPath;
                 }
                 
-                ftpAddressTextBox.Text = FtpAddress;
+                pathTextBox.Text = FtpPath;
+
                 RefreshFtpFileGridViewWithCurrentInput();
             }        
         }
@@ -150,7 +148,7 @@ namespace GFtp
         void DefaultFieldValue()
         {
             CurrentDirectory = Directory.GetCurrentDirectory();
-            _ftpController.Init(@"ftp://ftp.novell.com", "", "", progressBar);
+            _ftpController.Init(@"ftp://ftp.novell.com", 21, "",  "", "", progressBar);
         }
 
         // Display default field value to controls.
@@ -271,12 +269,7 @@ namespace GFtp
         // Refresh ftp file list box with current input (ftp address, id, password)
         private void RefreshFtpFileGridViewWithCurrentInput()
         {
-            string ftpAddressWithPort = ftpAddressTextBox.Text;
-            if (portTextBox.Text != "")
-            {
-                ftpAddressWithPort = ftpAddressTextBox.Text + ":" + portTextBox.Text + "/";
-            }
-            _ftpController.Init(ftpAddressWithPort, idTextBox.Text, passwordTextBox.Text, progressBar);
+            _ftpController.Init(ftpAddressTextBox.Text, Convert.ToInt32(portTextBox.Text), pathTextBox.Text, idTextBox.Text, passwordTextBox.Text, progressBar);
 
             // Connet to the ftp and get all file list.
             RefreshFtpFileGridView();
@@ -324,6 +317,9 @@ namespace GFtp
             item.Password = passwordTextBox.Text;
             _favorites.AddItem(groupTextBox.Text, item);
 
+            // save _favorites
+            favoritesTreeView.SaveFavoritesItems(_favorites);
+
             // refresh favorites tree view
             RefreshFavoritesTreeView();
         }
@@ -332,6 +328,9 @@ namespace GFtp
         private void delButton_Click(object sender, EventArgs e)
         {
             favoritesTreeView.DeleteSelectedFavoritesItem(_favorites);
+            
+            // save _favorites
+            favoritesTreeView.SaveFavoritesItems(_favorites);
 
             RefreshFavoritesTreeView();
         }

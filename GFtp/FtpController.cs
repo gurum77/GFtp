@@ -9,12 +9,39 @@ using System.Net;
 
 namespace GFtp
 {
+    // ftp address class
+    class FtpAddress
+    {
+        public FtpAddress()
+        {
+            Address = "";
+            Port = 21;
+            Path = "";
+        }
+
+        public string Address { get; set; }
+        public string Path { get; set; }
+        public int Port { get; set; }
+
+        // Get full address of ftp
+        public string GetFullAddress()
+        {
+            string fullAddress  = Address;
+            if (Port != 0)
+                fullAddress = fullAddress + ":" + Port.ToString();
+            if (Path != "")
+                fullAddress = fullAddress + "/" + Path;
+
+
+            return fullAddress;
+        }
+        
+    }
+
     class FtpController
     {
         //  _ftpAddress  = @"ftp://ftp.novell.com";
-        public string FtpAddress { get; set; }
-        public string FtpPath { get; set; }
-        public int Port { get; set; }
+        public FtpAddress Ftp { get; set; }
         public string ID { get; private set; }
         public string Password { get; private set; }
         public System.Windows.Forms.ProgressBar _progressBar    = null;
@@ -26,12 +53,16 @@ namespace GFtp
         public FtpController()
         {
             CurrentDirectory = @"c:\";
+            Ftp = new FtpAddress();
         }
 
         // constructor of FtpController
-        public void Init(string ftpAddress, string id, string password, System.Windows.Forms.ProgressBar progressBar)
+        public void Init(string ftpAddress, int port, string ftpPath, string id, string password, System.Windows.Forms.ProgressBar progressBar)
         {
-            FtpAddress = ftpAddress;
+            Ftp.Address = ftpAddress;
+            Ftp.Port = port;
+            Ftp.Path = ftpPath;
+            
             ID = id;
             Password = password;
 
@@ -55,7 +86,7 @@ namespace GFtp
 
             // connect ftp
             WebClient wc = new WebClient { Proxy = null };
-            wc.BaseAddress = FtpAddress;
+            wc.BaseAddress = Ftp.GetFullAddress();
             if (ID != "" && Password != "")
             {
                 wc.Credentials = new NetworkCredential(ID, Password);
@@ -66,7 +97,7 @@ namespace GFtp
                 foreach (string filename in files)
                 {
                     string pathName = Path.Combine(CurrentDirectory, filename);
-                    string ftpPathName = FtpAddress + "/" + filename;
+                    string ftpPathName = wc.BaseAddress + "/" + filename;
 
                     // increment progress bar
                     if(_progressBar != null)
@@ -95,7 +126,7 @@ namespace GFtp
         // Get all files on ftp root directory
         public GridFileInfo[] GetAllGridFileInfosFromFtp()
         {
-            return GetAllGridFileInfosFromFtp(FtpAddress, ID, Password);
+            return GetAllGridFileInfosFromFtp(Ftp.GetFullAddress(), ID, Password);
         }
 
         private GridFileInfo[] GetAllGridFileInfosFromFtp(string ftpAddr, string id, string password)

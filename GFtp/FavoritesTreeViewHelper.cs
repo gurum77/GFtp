@@ -11,6 +11,50 @@ namespace GFtp
 {
     static public class FavoritesTreeViewHelper
     {
+        // Save favorites items from favorites.xml file.
+        static public bool SaveFavoritesItems(this TreeView treeView, Favorites favorites)
+        {
+            XmlWriterSettings setting = new XmlWriterSettings();
+            setting.Indent = true;
+
+            try
+            {
+                List<FavoritesItem> items = null;
+                using (XmlWriter writer = XmlWriter.Create("favorites.xml", setting))
+                {
+                    writer.WriteStartElement("Favorites");
+
+                    foreach(var group in favorites._group)
+                    {
+                        string groupName = group.Key;
+                        writer.WriteStartElement("Group");
+                        writer.WriteAttributeString("name", groupName);
+
+                        foreach(var item in group.Value)
+                        {
+                            writer.WriteStartElement("Item");
+                            writer.WriteAttributeString("name", item.Name);
+                            writer.WriteAttributeString("address", item.Address);
+                            writer.WriteAttributeString("port", item.Port);
+                            writer.WriteAttributeString("path", item.Path);
+                            writer.WriteAttributeString("id", item.ID);
+                            writer.WriteAttributeString("password", item.Password);
+                            writer.WriteEndElement();
+                        }
+                        writer.WriteEndElement();
+
+                    }
+
+                    writer.WriteEndElement();
+                }
+            }
+            catch
+            {
+                MessageBox.Show("Not found favorites.xml");
+            }
+            return true;
+        }
+
         // Load favorites items from favorites.xml file.
         static public bool LoadFavoritesItems(this TreeView treeView, Favorites favorites)
         {
@@ -45,6 +89,7 @@ namespace GFtp
                                 item.Name   = reader.GetAttribute("name");
                                 item.Address = reader.GetAttribute("address");
                                 item.Port = reader.GetAttribute("port");
+                                item.Path = reader.GetAttribute("path");
                                 item.ID = reader.GetAttribute("id");
                                 item.Password   = reader.GetAttribute("password");
                                 
@@ -65,6 +110,8 @@ namespace GFtp
         // Refresh favorites items
         static public void RefreshFavoritesItems(this TreeView treeView, Favorites favorites)
         {
+            FtpAddress ftpAddress = new FtpAddress();
+
             treeView.Nodes.Clear();
             foreach (var group in favorites._group)
             {
@@ -74,11 +121,16 @@ namespace GFtp
                 groupNode.Text = groupName;
                 treeView.Nodes.Add(groupNode);
 
+                
                 foreach (var item in group.Value)
                 {
                     TreeNode itemNode = new TreeNode();
                     itemNode.Text = item.Name;
-                    itemNode.ToolTipText = item.Address;
+
+                    ftpAddress.Address = item.Address;
+                    ftpAddress.Port = Convert.ToInt32(item.Port);
+                    ftpAddress.Path = item.Path;
+                    itemNode.ToolTipText = ftpAddress.GetFullAddress();
                     groupNode.Nodes.Add(itemNode);
                 }
             }
