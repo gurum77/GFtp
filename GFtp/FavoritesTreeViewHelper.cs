@@ -11,7 +11,7 @@ namespace GFtp
 {
     static public class FavoritesTreeViewHelper
     {
-        // Save favorites items from favorites.xml file.
+        // Save favorites items to favorites.xml file.
         static public bool SaveFavoritesItems(this TreeView treeView, Favorites favorites)
         {
             XmlWriterSettings setting = new XmlWriterSettings();
@@ -58,12 +58,14 @@ namespace GFtp
         // Load favorites items from favorites.xml file.
         static public bool LoadFavoritesItems(this TreeView treeView, Favorites favorites)
         {
+            // Set a XmlReaderSetting.
             XmlReaderSettings setting = new XmlReaderSettings();
-            setting.IgnoreWhitespace = true;
+            setting.IgnoreWhitespace = true;    // Remove all unnecessary white spaces in the xml file.
             setting.ConformanceLevel = ConformanceLevel.Fragment;
 
             try
             {
+                XmlDocument
                 List<FavoritesItem> items   = null;
                 using (XmlReader reader = XmlReader.Create("favorites.xml", setting))
                 {
