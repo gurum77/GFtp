@@ -65,7 +65,6 @@ namespace GFtp
 
             try
             {
-                XmlDocument
                 List<FavoritesItem> items   = null;
                 using (XmlReader reader = XmlReader.Create("favorites.xml", setting))
                 {

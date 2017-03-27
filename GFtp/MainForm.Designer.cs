@@ -29,66 +29,50 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainForm));
-            this.ftpAddressTextBox = new System.Windows.Forms.TextBox();
-            this.idTextBox = new System.Windows.Forms.TextBox();
-            this.passwordTextBox = new System.Windows.Forms.TextBox();
-            this.label1 = new System.Windows.Forms.Label();
-            this.label2 = new System.Windows.Forms.Label();
-            this.label3 = new System.Windows.Forms.Label();
             this.toFtpButton = new System.Windows.Forms.Button();
-            this.connectionButton = new System.Windows.Forms.Button();
             this.fromFtpButton = new System.Windows.Forms.Button();
             this.fileGridView = new System.Windows.Forms.DataGridView();
             this.ftpFileGridView = new System.Windows.Forms.DataGridView();
             this.progressBar = new System.Windows.Forms.ProgressBar();
             this.explorerTree = new WindowsExplorer.ExplorerTree();
-            this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.delButton = new System.Windows.Forms.Button();
-            this.nameTextBox = new System.Windows.Forms.TextBox();
-            this.addButton = new System.Windows.Forms.Button();
-            this.nameLabel = new System.Windows.Forms.Label();
-            this.groupTextBox = new System.Windows.Forms.TextBox();
-            this.groupLabel = new System.Windows.Forms.Label();
-            this.portTextBox = new System.Windows.Forms.TextBox();
-            this.label4 = new System.Windows.Forms.Label();
             this.favoritesTreeView = new System.Windows.Forms.TreeView();
+            this.verticalSplitContainer = new System.Windows.Forms.SplitContainer();
+            this.rightSplitContainer = new System.Windows.Forms.SplitContainer();
+            this.label3 = new System.Windows.Forms.Label();
+            this.label2 = new System.Windows.Forms.Label();
+            this.connectionButton = new System.Windows.Forms.Button();
+            this.label1 = new System.Windows.Forms.Label();
+            this.passwordTextBox = new System.Windows.Forms.TextBox();
+            this.idTextBox = new System.Windows.Forms.TextBox();
+            this.ftpAddressTextBox = new System.Windows.Forms.TextBox();
+            this.label4 = new System.Windows.Forms.Label();
+            this.portTextBox = new System.Windows.Forms.TextBox();
+            this.groupLabel = new System.Windows.Forms.Label();
+            this.groupTextBox = new System.Windows.Forms.TextBox();
+            this.nameLabel = new System.Windows.Forms.Label();
+            this.addButton = new System.Windows.Forms.Button();
+            this.nameTextBox = new System.Windows.Forms.TextBox();
+            this.delButton = new System.Windows.Forms.Button();
             this.pathTextBox = new System.Windows.Forms.TextBox();
             this.label5 = new System.Windows.Forms.Label();
+            this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.leftSplitContainer = new System.Windows.Forms.SplitContainer();
             ((System.ComponentModel.ISupportInitialize)(this.fileGridView)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.ftpFileGridView)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.verticalSplitContainer)).BeginInit();
+            this.verticalSplitContainer.Panel1.SuspendLayout();
+            this.verticalSplitContainer.Panel2.SuspendLayout();
+            this.verticalSplitContainer.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.rightSplitContainer)).BeginInit();
+            this.rightSplitContainer.Panel1.SuspendLayout();
+            this.rightSplitContainer.Panel2.SuspendLayout();
+            this.rightSplitContainer.SuspendLayout();
             this.groupBox1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.leftSplitContainer)).BeginInit();
+            this.leftSplitContainer.Panel1.SuspendLayout();
+            this.leftSplitContainer.Panel2.SuspendLayout();
+            this.leftSplitContainer.SuspendLayout();
             this.SuspendLayout();
-            // 
-            // ftpAddressTextBox
-            // 
-            resources.ApplyResources(this.ftpAddressTextBox, "ftpAddressTextBox");
-            this.ftpAddressTextBox.Name = "ftpAddressTextBox";
-            this.ftpAddressTextBox.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.ftpAddressTextBox_KeyPress);
-            // 
-            // idTextBox
-            // 
-            resources.ApplyResources(this.idTextBox, "idTextBox");
-            this.idTextBox.Name = "idTextBox";
-            // 
-            // passwordTextBox
-            // 
-            resources.ApplyResources(this.passwordTextBox, "passwordTextBox");
-            this.passwordTextBox.Name = "passwordTextBox";
-            // 
-            // label1
-            // 
-            resources.ApplyResources(this.label1, "label1");
-            this.label1.Name = "label1";
-            // 
-            // label2
-            // 
-            resources.ApplyResources(this.label2, "label2");
-            this.label2.Name = "label2";
-            // 
-            // label3
-            // 
-            resources.ApplyResources(this.label3, "label3");
-            this.label3.Name = "label3";
             // 
             // toFtpButton
             // 
@@ -98,15 +82,6 @@
             this.toFtpButton.Name = "toFtpButton";
             this.toFtpButton.UseVisualStyleBackColor = false;
             this.toFtpButton.Click += new System.EventHandler(this.UploadToFtpButton_Click);
-            // 
-            // connectionButton
-            // 
-            this.connectionButton.BackColor = System.Drawing.Color.Green;
-            resources.ApplyResources(this.connectionButton, "connectionButton");
-            this.connectionButton.ForeColor = System.Drawing.Color.White;
-            this.connectionButton.Name = "connectionButton";
-            this.connectionButton.UseVisualStyleBackColor = false;
-            this.connectionButton.Click += new System.EventHandler(this.connectionButton_Click);
             // 
             // fromFtpButton
             // 
@@ -120,7 +95,9 @@
             // fileGridView
             // 
             resources.ApplyResources(this.fileGridView, "fileGridView");
+            this.fileGridView.BackgroundColor = System.Drawing.Color.White;
             this.fileGridView.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.fileGridView.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.None;
             this.fileGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
             this.fileGridView.EditMode = System.Windows.Forms.DataGridViewEditMode.EditProgrammatically;
             this.fileGridView.GridColor = System.Drawing.SystemColors.ControlLight;
@@ -132,7 +109,9 @@
             // ftpFileGridView
             // 
             resources.ApplyResources(this.ftpFileGridView, "ftpFileGridView");
+            this.ftpFileGridView.BackgroundColor = System.Drawing.Color.White;
             this.ftpFileGridView.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.ftpFileGridView.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.None;
             this.ftpFileGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
             this.ftpFileGridView.EditMode = System.Windows.Forms.DataGridViewEditMode.EditProgrammatically;
             this.ftpFileGridView.GridColor = System.Drawing.SystemColors.ControlLight;
@@ -161,8 +140,142 @@
             this.explorerTree.ShowToolbar = true;
             this.explorerTree.PathChanged += new WindowsExplorer.ExplorerTree.PathChangedEventHandler(this.explorerTree_PathChanged);
             // 
+            // favoritesTreeView
+            // 
+            resources.ApplyResources(this.favoritesTreeView, "favoritesTreeView");
+            this.favoritesTreeView.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.favoritesTreeView.Name = "favoritesTreeView";
+            this.favoritesTreeView.ShowNodeToolTips = true;
+            // 
+            // verticalSplitContainer
+            // 
+            resources.ApplyResources(this.verticalSplitContainer, "verticalSplitContainer");
+            this.verticalSplitContainer.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.verticalSplitContainer.Name = "verticalSplitContainer";
+            // 
+            // verticalSplitContainer.Panel1
+            // 
+            this.verticalSplitContainer.Panel1.Controls.Add(this.leftSplitContainer);
+            // 
+            // verticalSplitContainer.Panel2
+            // 
+            this.verticalSplitContainer.Panel2.Controls.Add(this.rightSplitContainer);
+            // 
+            // rightSplitContainer
+            // 
+            resources.ApplyResources(this.rightSplitContainer, "rightSplitContainer");
+            this.rightSplitContainer.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.rightSplitContainer.Name = "rightSplitContainer";
+            // 
+            // rightSplitContainer.Panel1
+            // 
+            this.rightSplitContainer.Panel1.Controls.Add(this.ftpFileGridView);
+            // 
+            // rightSplitContainer.Panel2
+            // 
+            this.rightSplitContainer.Panel2.Controls.Add(this.fileGridView);
+            // 
+            // label3
+            // 
+            resources.ApplyResources(this.label3, "label3");
+            this.label3.Name = "label3";
+            // 
+            // label2
+            // 
+            resources.ApplyResources(this.label2, "label2");
+            this.label2.Name = "label2";
+            // 
+            // connectionButton
+            // 
+            resources.ApplyResources(this.connectionButton, "connectionButton");
+            this.connectionButton.BackColor = System.Drawing.Color.Green;
+            this.connectionButton.ForeColor = System.Drawing.Color.White;
+            this.connectionButton.Name = "connectionButton";
+            this.connectionButton.UseVisualStyleBackColor = false;
+            this.connectionButton.Click += new System.EventHandler(this.connectionButton_Click);
+            // 
+            // label1
+            // 
+            resources.ApplyResources(this.label1, "label1");
+            this.label1.Name = "label1";
+            // 
+            // passwordTextBox
+            // 
+            resources.ApplyResources(this.passwordTextBox, "passwordTextBox");
+            this.passwordTextBox.Name = "passwordTextBox";
+            // 
+            // idTextBox
+            // 
+            resources.ApplyResources(this.idTextBox, "idTextBox");
+            this.idTextBox.Name = "idTextBox";
+            // 
+            // ftpAddressTextBox
+            // 
+            resources.ApplyResources(this.ftpAddressTextBox, "ftpAddressTextBox");
+            this.ftpAddressTextBox.Name = "ftpAddressTextBox";
+            this.ftpAddressTextBox.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.ftpAddressTextBox_KeyPress);
+            // 
+            // label4
+            // 
+            resources.ApplyResources(this.label4, "label4");
+            this.label4.Name = "label4";
+            // 
+            // portTextBox
+            // 
+            resources.ApplyResources(this.portTextBox, "portTextBox");
+            this.portTextBox.Name = "portTextBox";
+            // 
+            // groupLabel
+            // 
+            resources.ApplyResources(this.groupLabel, "groupLabel");
+            this.groupLabel.Name = "groupLabel";
+            // 
+            // groupTextBox
+            // 
+            resources.ApplyResources(this.groupTextBox, "groupTextBox");
+            this.groupTextBox.Name = "groupTextBox";
+            // 
+            // nameLabel
+            // 
+            resources.ApplyResources(this.nameLabel, "nameLabel");
+            this.nameLabel.Name = "nameLabel";
+            // 
+            // addButton
+            // 
+            this.addButton.BackColor = System.Drawing.Color.Goldenrod;
+            resources.ApplyResources(this.addButton, "addButton");
+            this.addButton.ForeColor = System.Drawing.Color.White;
+            this.addButton.Name = "addButton";
+            this.addButton.UseVisualStyleBackColor = false;
+            this.addButton.Click += new System.EventHandler(this.addButton_Click);
+            // 
+            // nameTextBox
+            // 
+            resources.ApplyResources(this.nameTextBox, "nameTextBox");
+            this.nameTextBox.Name = "nameTextBox";
+            // 
+            // delButton
+            // 
+            this.delButton.BackColor = System.Drawing.Color.Goldenrod;
+            resources.ApplyResources(this.delButton, "delButton");
+            this.delButton.ForeColor = System.Drawing.Color.White;
+            this.delButton.Name = "delButton";
+            this.delButton.UseVisualStyleBackColor = false;
+            this.delButton.Click += new System.EventHandler(this.delButton_Click);
+            // 
+            // pathTextBox
+            // 
+            resources.ApplyResources(this.pathTextBox, "pathTextBox");
+            this.pathTextBox.Name = "pathTextBox";
+            // 
+            // label5
+            // 
+            resources.ApplyResources(this.label5, "label5");
+            this.label5.Name = "label5";
+            // 
             // groupBox1
             // 
+            resources.ApplyResources(this.groupBox1, "groupBox1");
             this.groupBox1.Controls.Add(this.label5);
             this.groupBox1.Controls.Add(this.pathTextBox);
             this.groupBox1.Controls.Add(this.delButton);
@@ -180,96 +293,51 @@
             this.groupBox1.Controls.Add(this.connectionButton);
             this.groupBox1.Controls.Add(this.label2);
             this.groupBox1.Controls.Add(this.label3);
-            resources.ApplyResources(this.groupBox1, "groupBox1");
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.TabStop = false;
             // 
-            // delButton
+            // leftSplitContainer
             // 
-            this.delButton.BackColor = System.Drawing.Color.Goldenrod;
-            resources.ApplyResources(this.delButton, "delButton");
-            this.delButton.ForeColor = System.Drawing.Color.White;
-            this.delButton.Name = "delButton";
-            this.delButton.UseVisualStyleBackColor = false;
-            this.delButton.Click += new System.EventHandler(this.delButton_Click);
+            resources.ApplyResources(this.leftSplitContainer, "leftSplitContainer");
+            this.leftSplitContainer.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.leftSplitContainer.Name = "leftSplitContainer";
             // 
-            // nameTextBox
+            // leftSplitContainer.Panel1
             // 
-            resources.ApplyResources(this.nameTextBox, "nameTextBox");
-            this.nameTextBox.Name = "nameTextBox";
+            this.leftSplitContainer.Panel1.Controls.Add(this.favoritesTreeView);
+            this.leftSplitContainer.Panel1.Controls.Add(this.groupBox1);
             // 
-            // addButton
+            // leftSplitContainer.Panel2
             // 
-            this.addButton.BackColor = System.Drawing.Color.Goldenrod;
-            resources.ApplyResources(this.addButton, "addButton");
-            this.addButton.ForeColor = System.Drawing.Color.White;
-            this.addButton.Name = "addButton";
-            this.addButton.UseVisualStyleBackColor = false;
-            this.addButton.Click += new System.EventHandler(this.addButton_Click);
-            // 
-            // nameLabel
-            // 
-            resources.ApplyResources(this.nameLabel, "nameLabel");
-            this.nameLabel.Name = "nameLabel";
-            // 
-            // groupTextBox
-            // 
-            resources.ApplyResources(this.groupTextBox, "groupTextBox");
-            this.groupTextBox.Name = "groupTextBox";
-            // 
-            // groupLabel
-            // 
-            resources.ApplyResources(this.groupLabel, "groupLabel");
-            this.groupLabel.Name = "groupLabel";
-            // 
-            // portTextBox
-            // 
-            resources.ApplyResources(this.portTextBox, "portTextBox");
-            this.portTextBox.Name = "portTextBox";
-            // 
-            // label4
-            // 
-            resources.ApplyResources(this.label4, "label4");
-            this.label4.Name = "label4";
-            // 
-            // favoritesTreeView
-            // 
-            this.favoritesTreeView.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            resources.ApplyResources(this.favoritesTreeView, "favoritesTreeView");
-            this.favoritesTreeView.Name = "favoritesTreeView";
-            this.favoritesTreeView.ShowNodeToolTips = true;
-            this.favoritesTreeView.GotFocus += FavoritesTreeView_GotFocus;
-            this.favoritesTreeView.LostFocus += FavoritesTreeView_LostFocus;
-            // 
-            // pathTextBox
-            // 
-            resources.ApplyResources(this.pathTextBox, "pathTextBox");
-            this.pathTextBox.Name = "pathTextBox";
-            // 
-            // label5
-            // 
-            resources.ApplyResources(this.label5, "label5");
-            this.label5.Name = "label5";
+            this.leftSplitContainer.Panel2.Controls.Add(this.explorerTree);
             // 
             // MainForm
             // 
             resources.ApplyResources(this, "$this");
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
-            this.Controls.Add(this.favoritesTreeView);
             this.Controls.Add(this.progressBar);
-            this.Controls.Add(this.ftpFileGridView);
-            this.Controls.Add(this.fileGridView);
             this.Controls.Add(this.fromFtpButton);
             this.Controls.Add(this.toFtpButton);
-            this.Controls.Add(this.explorerTree);
-            this.Controls.Add(this.groupBox1);
+            this.Controls.Add(this.verticalSplitContainer);
             this.Name = "MainForm";
             this.Load += new System.EventHandler(this.Form1_Load);
             ((System.ComponentModel.ISupportInitialize)(this.fileGridView)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.ftpFileGridView)).EndInit();
+            this.verticalSplitContainer.Panel1.ResumeLayout(false);
+            this.verticalSplitContainer.Panel2.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.verticalSplitContainer)).EndInit();
+            this.verticalSplitContainer.ResumeLayout(false);
+            this.rightSplitContainer.Panel1.ResumeLayout(false);
+            this.rightSplitContainer.Panel2.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.rightSplitContainer)).EndInit();
+            this.rightSplitContainer.ResumeLayout(false);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
+            this.leftSplitContainer.Panel1.ResumeLayout(false);
+            this.leftSplitContainer.Panel2.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.leftSplitContainer)).EndInit();
+            this.leftSplitContainer.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -304,32 +372,34 @@
         }
 
         #endregion
-
-        private System.Windows.Forms.TextBox ftpAddressTextBox;
-        private System.Windows.Forms.TextBox idTextBox;
-        private System.Windows.Forms.TextBox passwordTextBox;
-        private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Button toFtpButton;
-        private System.Windows.Forms.Button connectionButton;
         private System.Windows.Forms.Button fromFtpButton;
         private System.Windows.Forms.DataGridView fileGridView;
         private System.Windows.Forms.DataGridView ftpFileGridView;
         private System.Windows.Forms.ProgressBar progressBar;
         private WindowsExplorer.ExplorerTree explorerTree;
-        private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.TreeView favoritesTreeView;
-        private System.Windows.Forms.Button addButton;
-        private System.Windows.Forms.Button delButton;
-        private System.Windows.Forms.TextBox nameTextBox;
-        private System.Windows.Forms.Label nameLabel;
-        private System.Windows.Forms.TextBox groupTextBox;
-        private System.Windows.Forms.Label groupLabel;
-        private System.Windows.Forms.TextBox portTextBox;
+        private System.Windows.Forms.SplitContainer verticalSplitContainer;
+        private System.Windows.Forms.SplitContainer rightSplitContainer;
+        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Button connectionButton;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.TextBox passwordTextBox;
+        private System.Windows.Forms.TextBox idTextBox;
+        private System.Windows.Forms.TextBox ftpAddressTextBox;
         private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.TextBox portTextBox;
+        private System.Windows.Forms.Label groupLabel;
+        private System.Windows.Forms.TextBox groupTextBox;
+        private System.Windows.Forms.Label nameLabel;
+        private System.Windows.Forms.Button addButton;
+        private System.Windows.Forms.TextBox nameTextBox;
+        private System.Windows.Forms.Button delButton;
         private System.Windows.Forms.TextBox pathTextBox;
+        private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.GroupBox groupBox1;
+        private System.Windows.Forms.SplitContainer leftSplitContainer;
     }
 }
 

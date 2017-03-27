@@ -269,7 +269,17 @@ namespace GFtp
         // Refresh ftp file list box with current input (ftp address, id, password)
         private void RefreshFtpFileGridViewWithCurrentInput()
         {
-            _ftpController.Init(ftpAddressTextBox.Text, Convert.ToInt32(portTextBox.Text), pathTextBox.Text, idTextBox.Text, passwordTextBox.Text, progressBar);
+            int port = 0;
+            try
+            {
+                port = Convert.ToInt32(portTextBox.Text);
+            }
+            catch
+            {
+
+            }
+           
+            _ftpController.Init(ftpAddressTextBox.Text, port, pathTextBox.Text, idTextBox.Text, passwordTextBox.Text, progressBar);
 
             // Connet to the ftp and get all file list.
             RefreshFtpFileGridView();
