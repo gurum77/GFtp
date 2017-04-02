@@ -37,41 +37,42 @@
             this.explorerTree = new WindowsExplorer.ExplorerTree();
             this.favoritesTreeView = new System.Windows.Forms.TreeView();
             this.verticalSplitContainer = new System.Windows.Forms.SplitContainer();
-            this.rightSplitContainer = new System.Windows.Forms.SplitContainer();
-            this.label3 = new System.Windows.Forms.Label();
-            this.label2 = new System.Windows.Forms.Label();
-            this.connectionButton = new System.Windows.Forms.Button();
-            this.label1 = new System.Windows.Forms.Label();
-            this.passwordTextBox = new System.Windows.Forms.TextBox();
-            this.idTextBox = new System.Windows.Forms.TextBox();
-            this.ftpAddressTextBox = new System.Windows.Forms.TextBox();
-            this.label4 = new System.Windows.Forms.Label();
-            this.portTextBox = new System.Windows.Forms.TextBox();
-            this.groupLabel = new System.Windows.Forms.Label();
-            this.groupTextBox = new System.Windows.Forms.TextBox();
-            this.nameLabel = new System.Windows.Forms.Label();
-            this.addButton = new System.Windows.Forms.Button();
-            this.nameTextBox = new System.Windows.Forms.TextBox();
-            this.delButton = new System.Windows.Forms.Button();
-            this.pathTextBox = new System.Windows.Forms.TextBox();
-            this.label5 = new System.Windows.Forms.Label();
-            this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.leftSplitContainer = new System.Windows.Forms.SplitContainer();
+            this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.label5 = new System.Windows.Forms.Label();
+            this.pathTextBox = new System.Windows.Forms.TextBox();
+            this.delButton = new System.Windows.Forms.Button();
+            this.nameTextBox = new System.Windows.Forms.TextBox();
+            this.addButton = new System.Windows.Forms.Button();
+            this.nameLabel = new System.Windows.Forms.Label();
+            this.groupTextBox = new System.Windows.Forms.TextBox();
+            this.groupLabel = new System.Windows.Forms.Label();
+            this.portTextBox = new System.Windows.Forms.TextBox();
+            this.label4 = new System.Windows.Forms.Label();
+            this.ftpAddressTextBox = new System.Windows.Forms.TextBox();
+            this.idTextBox = new System.Windows.Forms.TextBox();
+            this.passwordTextBox = new System.Windows.Forms.TextBox();
+            this.label1 = new System.Windows.Forms.Label();
+            this.connectionButton = new System.Windows.Forms.Button();
+            this.label2 = new System.Windows.Forms.Label();
+            this.label3 = new System.Windows.Forms.Label();
+            this.rightSplitContainer = new System.Windows.Forms.SplitContainer();
+            this.backgroundWorker = new System.ComponentModel.BackgroundWorker();
             ((System.ComponentModel.ISupportInitialize)(this.fileGridView)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.ftpFileGridView)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.verticalSplitContainer)).BeginInit();
             this.verticalSplitContainer.Panel1.SuspendLayout();
             this.verticalSplitContainer.Panel2.SuspendLayout();
             this.verticalSplitContainer.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.rightSplitContainer)).BeginInit();
-            this.rightSplitContainer.Panel1.SuspendLayout();
-            this.rightSplitContainer.Panel2.SuspendLayout();
-            this.rightSplitContainer.SuspendLayout();
-            this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.leftSplitContainer)).BeginInit();
             this.leftSplitContainer.Panel1.SuspendLayout();
             this.leftSplitContainer.Panel2.SuspendLayout();
             this.leftSplitContainer.SuspendLayout();
+            this.groupBox1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.rightSplitContainer)).BeginInit();
+            this.rightSplitContainer.Panel1.SuspendLayout();
+            this.rightSplitContainer.Panel2.SuspendLayout();
+            this.rightSplitContainer.SuspendLayout();
             this.SuspendLayout();
             // 
             // toFtpButton
@@ -90,7 +91,7 @@
             this.fromFtpButton.ForeColor = System.Drawing.Color.White;
             this.fromFtpButton.Name = "fromFtpButton";
             this.fromFtpButton.UseVisualStyleBackColor = false;
-            this.fromFtpButton.Click += new System.EventHandler(this.fromFtpButton_Click);
+            this.fromFtpButton.Click += new System.EventHandler(this.downloadFromFtpButton_Click);
             // 
             // fileGridView
             // 
@@ -132,7 +133,7 @@
             resources.ApplyResources(this.explorerTree, "explorerTree");
             this.explorerTree.BackColor = System.Drawing.Color.White;
             this.explorerTree.Name = "explorerTree";
-            this.explorerTree.SelectedPath = "C:\\Program Files (x86)\\Microsoft Visual Studio 14.0\\Common7\\IDE";
+            this.explorerTree.SelectedPath = "D:\\Program Files (x86)\\Microsoft Visual Studio 11.0\\Common7\\IDE";
             this.explorerTree.ShowAddressbar = true;
             this.explorerTree.ShowMyDocuments = true;
             this.explorerTree.ShowMyFavorites = true;
@@ -161,117 +162,20 @@
             // 
             this.verticalSplitContainer.Panel2.Controls.Add(this.rightSplitContainer);
             // 
-            // rightSplitContainer
+            // leftSplitContainer
             // 
-            resources.ApplyResources(this.rightSplitContainer, "rightSplitContainer");
-            this.rightSplitContainer.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.rightSplitContainer.Name = "rightSplitContainer";
+            resources.ApplyResources(this.leftSplitContainer, "leftSplitContainer");
+            this.leftSplitContainer.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.leftSplitContainer.Name = "leftSplitContainer";
             // 
-            // rightSplitContainer.Panel1
+            // leftSplitContainer.Panel1
             // 
-            this.rightSplitContainer.Panel1.Controls.Add(this.ftpFileGridView);
+            this.leftSplitContainer.Panel1.Controls.Add(this.favoritesTreeView);
+            this.leftSplitContainer.Panel1.Controls.Add(this.groupBox1);
             // 
-            // rightSplitContainer.Panel2
+            // leftSplitContainer.Panel2
             // 
-            this.rightSplitContainer.Panel2.Controls.Add(this.fileGridView);
-            // 
-            // label3
-            // 
-            resources.ApplyResources(this.label3, "label3");
-            this.label3.Name = "label3";
-            // 
-            // label2
-            // 
-            resources.ApplyResources(this.label2, "label2");
-            this.label2.Name = "label2";
-            // 
-            // connectionButton
-            // 
-            resources.ApplyResources(this.connectionButton, "connectionButton");
-            this.connectionButton.BackColor = System.Drawing.Color.Green;
-            this.connectionButton.ForeColor = System.Drawing.Color.White;
-            this.connectionButton.Name = "connectionButton";
-            this.connectionButton.UseVisualStyleBackColor = false;
-            this.connectionButton.Click += new System.EventHandler(this.connectionButton_Click);
-            // 
-            // label1
-            // 
-            resources.ApplyResources(this.label1, "label1");
-            this.label1.Name = "label1";
-            // 
-            // passwordTextBox
-            // 
-            resources.ApplyResources(this.passwordTextBox, "passwordTextBox");
-            this.passwordTextBox.Name = "passwordTextBox";
-            // 
-            // idTextBox
-            // 
-            resources.ApplyResources(this.idTextBox, "idTextBox");
-            this.idTextBox.Name = "idTextBox";
-            // 
-            // ftpAddressTextBox
-            // 
-            resources.ApplyResources(this.ftpAddressTextBox, "ftpAddressTextBox");
-            this.ftpAddressTextBox.Name = "ftpAddressTextBox";
-            this.ftpAddressTextBox.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.ftpAddressTextBox_KeyPress);
-            // 
-            // label4
-            // 
-            resources.ApplyResources(this.label4, "label4");
-            this.label4.Name = "label4";
-            // 
-            // portTextBox
-            // 
-            resources.ApplyResources(this.portTextBox, "portTextBox");
-            this.portTextBox.Name = "portTextBox";
-            // 
-            // groupLabel
-            // 
-            resources.ApplyResources(this.groupLabel, "groupLabel");
-            this.groupLabel.Name = "groupLabel";
-            // 
-            // groupTextBox
-            // 
-            resources.ApplyResources(this.groupTextBox, "groupTextBox");
-            this.groupTextBox.Name = "groupTextBox";
-            // 
-            // nameLabel
-            // 
-            resources.ApplyResources(this.nameLabel, "nameLabel");
-            this.nameLabel.Name = "nameLabel";
-            // 
-            // addButton
-            // 
-            this.addButton.BackColor = System.Drawing.Color.Goldenrod;
-            resources.ApplyResources(this.addButton, "addButton");
-            this.addButton.ForeColor = System.Drawing.Color.White;
-            this.addButton.Name = "addButton";
-            this.addButton.UseVisualStyleBackColor = false;
-            this.addButton.Click += new System.EventHandler(this.addButton_Click);
-            // 
-            // nameTextBox
-            // 
-            resources.ApplyResources(this.nameTextBox, "nameTextBox");
-            this.nameTextBox.Name = "nameTextBox";
-            // 
-            // delButton
-            // 
-            this.delButton.BackColor = System.Drawing.Color.Goldenrod;
-            resources.ApplyResources(this.delButton, "delButton");
-            this.delButton.ForeColor = System.Drawing.Color.White;
-            this.delButton.Name = "delButton";
-            this.delButton.UseVisualStyleBackColor = false;
-            this.delButton.Click += new System.EventHandler(this.delButton_Click);
-            // 
-            // pathTextBox
-            // 
-            resources.ApplyResources(this.pathTextBox, "pathTextBox");
-            this.pathTextBox.Name = "pathTextBox";
-            // 
-            // label5
-            // 
-            resources.ApplyResources(this.label5, "label5");
-            this.label5.Name = "label5";
+            this.leftSplitContainer.Panel2.Controls.Add(this.explorerTree);
             // 
             // groupBox1
             // 
@@ -296,20 +200,125 @@
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.TabStop = false;
             // 
-            // leftSplitContainer
+            // label5
             // 
-            resources.ApplyResources(this.leftSplitContainer, "leftSplitContainer");
-            this.leftSplitContainer.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.leftSplitContainer.Name = "leftSplitContainer";
+            resources.ApplyResources(this.label5, "label5");
+            this.label5.Name = "label5";
             // 
-            // leftSplitContainer.Panel1
+            // pathTextBox
             // 
-            this.leftSplitContainer.Panel1.Controls.Add(this.favoritesTreeView);
-            this.leftSplitContainer.Panel1.Controls.Add(this.groupBox1);
+            resources.ApplyResources(this.pathTextBox, "pathTextBox");
+            this.pathTextBox.Name = "pathTextBox";
             // 
-            // leftSplitContainer.Panel2
+            // delButton
             // 
-            this.leftSplitContainer.Panel2.Controls.Add(this.explorerTree);
+            this.delButton.BackColor = System.Drawing.Color.Goldenrod;
+            resources.ApplyResources(this.delButton, "delButton");
+            this.delButton.ForeColor = System.Drawing.Color.White;
+            this.delButton.Name = "delButton";
+            this.delButton.UseVisualStyleBackColor = false;
+            this.delButton.Click += new System.EventHandler(this.delButton_Click);
+            // 
+            // nameTextBox
+            // 
+            resources.ApplyResources(this.nameTextBox, "nameTextBox");
+            this.nameTextBox.Name = "nameTextBox";
+            // 
+            // addButton
+            // 
+            this.addButton.BackColor = System.Drawing.Color.Goldenrod;
+            resources.ApplyResources(this.addButton, "addButton");
+            this.addButton.ForeColor = System.Drawing.Color.White;
+            this.addButton.Name = "addButton";
+            this.addButton.UseVisualStyleBackColor = false;
+            this.addButton.Click += new System.EventHandler(this.addButton_Click);
+            // 
+            // nameLabel
+            // 
+            resources.ApplyResources(this.nameLabel, "nameLabel");
+            this.nameLabel.Name = "nameLabel";
+            // 
+            // groupTextBox
+            // 
+            resources.ApplyResources(this.groupTextBox, "groupTextBox");
+            this.groupTextBox.Name = "groupTextBox";
+            // 
+            // groupLabel
+            // 
+            resources.ApplyResources(this.groupLabel, "groupLabel");
+            this.groupLabel.Name = "groupLabel";
+            // 
+            // portTextBox
+            // 
+            resources.ApplyResources(this.portTextBox, "portTextBox");
+            this.portTextBox.Name = "portTextBox";
+            // 
+            // label4
+            // 
+            resources.ApplyResources(this.label4, "label4");
+            this.label4.Name = "label4";
+            // 
+            // ftpAddressTextBox
+            // 
+            resources.ApplyResources(this.ftpAddressTextBox, "ftpAddressTextBox");
+            this.ftpAddressTextBox.Name = "ftpAddressTextBox";
+            this.ftpAddressTextBox.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.ftpAddressTextBox_KeyPress);
+            // 
+            // idTextBox
+            // 
+            resources.ApplyResources(this.idTextBox, "idTextBox");
+            this.idTextBox.Name = "idTextBox";
+            // 
+            // passwordTextBox
+            // 
+            resources.ApplyResources(this.passwordTextBox, "passwordTextBox");
+            this.passwordTextBox.Name = "passwordTextBox";
+            // 
+            // label1
+            // 
+            resources.ApplyResources(this.label1, "label1");
+            this.label1.Name = "label1";
+            // 
+            // connectionButton
+            // 
+            resources.ApplyResources(this.connectionButton, "connectionButton");
+            this.connectionButton.BackColor = System.Drawing.Color.Green;
+            this.connectionButton.ForeColor = System.Drawing.Color.White;
+            this.connectionButton.Name = "connectionButton";
+            this.connectionButton.UseVisualStyleBackColor = false;
+            this.connectionButton.Click += new System.EventHandler(this.connectionButton_Click);
+            // 
+            // label2
+            // 
+            resources.ApplyResources(this.label2, "label2");
+            this.label2.Name = "label2";
+            // 
+            // label3
+            // 
+            resources.ApplyResources(this.label3, "label3");
+            this.label3.Name = "label3";
+            // 
+            // rightSplitContainer
+            // 
+            resources.ApplyResources(this.rightSplitContainer, "rightSplitContainer");
+            this.rightSplitContainer.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.rightSplitContainer.Name = "rightSplitContainer";
+            // 
+            // rightSplitContainer.Panel1
+            // 
+            this.rightSplitContainer.Panel1.Controls.Add(this.ftpFileGridView);
+            // 
+            // rightSplitContainer.Panel2
+            // 
+            this.rightSplitContainer.Panel2.Controls.Add(this.fileGridView);
+            // 
+            // backgroundWorker
+            // 
+            this.backgroundWorker.WorkerReportsProgress = true;
+            this.backgroundWorker.WorkerSupportsCancellation = true;
+            this.backgroundWorker.DoWork += new System.ComponentModel.DoWorkEventHandler(this.backgroundWorker_DoWork);
+            this.backgroundWorker.ProgressChanged += new System.ComponentModel.ProgressChangedEventHandler(this.backgroundWorker_ProgressChanged);
+            this.backgroundWorker.RunWorkerCompleted += new System.ComponentModel.RunWorkerCompletedEventHandler(this.backgroundWorker_RunWorkerCompleted);
             // 
             // MainForm
             // 
@@ -328,19 +337,23 @@
             this.verticalSplitContainer.Panel2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.verticalSplitContainer)).EndInit();
             this.verticalSplitContainer.ResumeLayout(false);
-            this.rightSplitContainer.Panel1.ResumeLayout(false);
-            this.rightSplitContainer.Panel2.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.rightSplitContainer)).EndInit();
-            this.rightSplitContainer.ResumeLayout(false);
-            this.groupBox1.ResumeLayout(false);
-            this.groupBox1.PerformLayout();
             this.leftSplitContainer.Panel1.ResumeLayout(false);
             this.leftSplitContainer.Panel2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.leftSplitContainer)).EndInit();
             this.leftSplitContainer.ResumeLayout(false);
+            this.groupBox1.ResumeLayout(false);
+            this.groupBox1.PerformLayout();
+            this.rightSplitContainer.Panel1.ResumeLayout(false);
+            this.rightSplitContainer.Panel2.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.rightSplitContainer)).EndInit();
+            this.rightSplitContainer.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
+
+     
+
+        
 
         // When favorites tree view lost focus, initialize all controls state.
         private void FavoritesTreeView_LostFocus(object sender, System.EventArgs e)
@@ -348,7 +361,7 @@
             InitControl();
         }
 
-        // When favorites tree view get focus, initialize all controls state.
+        // When favorites tree view get focus, initialize all contfrols state.
         private void FavoritesTreeView_GotFocus(object sender, System.EventArgs e)
         {
             InitControl();
@@ -400,6 +413,7 @@
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.SplitContainer leftSplitContainer;
+        private System.ComponentModel.BackgroundWorker backgroundWorker;
     }
 }
 

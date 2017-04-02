@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.IO;
 using System.Net;
+using System.ComponentModel;
 
 namespace GFtp
 {
@@ -49,6 +50,12 @@ namespace GFtp
         // When the Form1 is loaded, display directory list to directoryTreeView control.
         public string CurrentDirectory { get; set; }
 
+        // This property is if current behavior is upload or download.
+        public bool Upload { get; set; }
+
+        // Current translating file.
+        public string CurrentTranslatingFile { get; set; }
+
         // Constructor
         public FtpController()
         {
@@ -70,7 +77,7 @@ namespace GFtp
         }
 
         // Translate files from local to ftp or from ftp to local
-        public bool TranslateFiles(string[] files, bool IsUpload)
+        public bool TranslateFiles(string[] files, BackgroundWorker worker)
         {
             // Set a progressbar
             if(_progressBar != null)
@@ -94,17 +101,34 @@ namespace GFtp
 
             try
             {
+                int percent = 0;
+                int gap = 100 / files.Length;
                 foreach (string filename in files)
                 {
                     string pathName = Path.Combine(CurrentDirectory, filename);
                     string ftpPathName = wc.BaseAddress + "/" + filename;
 
+                    // Sets the CurrentTranslatingFile
+                    CurrentTranslatingFile = filename;
+
                     // increment progress bar
                     if(_progressBar != null)
                         _progressBar.PerformStep();
 
+                    // background work report process setting
+                    if (worker != null)
+                    {
+                        percent += gap;
+                        worker.ReportProgress(percent);
+
+                        if (worker.CancellationPending == true)
+                        {
+                            break;
+                        }
+                    }
+
                     // upload
-                    if (IsUpload)
+                    if (Upload)
                     {
                         wc.UploadFile(ftpPathName, pathName);
                     }

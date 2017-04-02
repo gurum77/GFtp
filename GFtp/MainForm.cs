@@ -5,6 +5,7 @@ using System.Data;
 using System.Drawing;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.IO;
@@ -15,6 +16,7 @@ namespace GFtp
 {
     public partial class MainForm : Form
     {
+        ProgressForm _progressForm;
         Favorites _favorites = new Favorites();
         FtpController _ftpController = new FtpController();
         private string CurrentDirectory
@@ -44,6 +46,19 @@ namespace GFtp
         private string Password
         {
             get { return _ftpController.Password; }
+        }
+
+        // Get a ProgressBar for translating files.
+        ProgressBar GetProgressBar()
+        {
+            if (_progressForm == null)
+                return null;
+
+            bool useProgressForm = true;
+            if (useProgressForm)
+                return _progressForm.GetProgressBar();
+
+            return progressBar;
         }
   
         public MainForm()
@@ -148,7 +163,7 @@ namespace GFtp
         void DefaultFieldValue()
         {
             CurrentDirectory = Directory.GetCurrentDirectory();
-            _ftpController.Init(@"ftp://ftp.novell.com", 21, "",  "", "", progressBar);
+            _ftpController.Init(@"ftp://ftp.novell.com", 21, "",  "", "", null);
         }
 
         // Display default field value to controls.
@@ -236,21 +251,34 @@ namespace GFtp
             ftpFileGridView.DisplayFiles(_ftpController.GetAllGridFileInfosFromFtp());
         }
 
+        // Shows ProgressForm on where center of main form.
+        private void ShowProgressForm(bool isUpload)
+        {
+            _progressForm = new ProgressForm();
+            _progressForm.Canceled += _progressForm_Canceled;
+
+            // Sets to show center position of parent
+            _progressForm.StartPosition = FormStartPosition.CenterScreen;
+
+            // Shows
+            _progressForm.Show();
+
+
+            
+        }
         // Translate files from local to ftp
         private void UploadToFtpButton_Click(object sender, EventArgs e)
         {
-            // Get files of local
-            string[] files = fileGridView.GetSelectedFiles();
+            // If backgroundWorker is busy then return
+            if (backgroundWorker.IsBusy == true)
+                return;
 
-            if (_ftpController.TranslateFiles(files, true))
-            {
-                RefreshFtpFileGridView();
-                MessageBox.Show("Completed.");
-            }
-            else
-            {
-                MessageBox.Show("Failded Upload.");
-            }
+            // show a progress form 
+            ShowProgressForm(true);
+
+            // Start a DoWork function of background work .
+            _ftpController.Upload = true;
+            backgroundWorker.RunWorkerAsync();
         }
 
         // Connect to ftp
@@ -279,26 +307,88 @@ namespace GFtp
 
             }
            
-            _ftpController.Init(ftpAddressTextBox.Text, port, pathTextBox.Text, idTextBox.Text, passwordTextBox.Text, progressBar);
-
+            _ftpController.Init(ftpAddressTextBox.Text, port, pathTextBox.Text, idTextBox.Text, passwordTextBox.Text, null);
+            
             // Connet to the ftp and get all file list.
             RefreshFtpFileGridView();
         }
 
         // Download selected files on ftp.
-        private void fromFtpButton_Click(object sender, EventArgs e)
+        private void downloadFromFtpButton_Click(object sender, EventArgs e)
         {
-            // Get files of ftp
-            string[] files = ftpFileGridView.GetSelectedFiles();
+            // If backgroundWorker is busy then return
+           if(backgroundWorker.IsBusy == true)
+               return;
+           
+           // show a progress form 
+           ShowProgressForm(false);
 
-            if (_ftpController.TranslateFiles(files, false))
+            // Start a DoWork function of background work .
+           _ftpController.Upload = false;
+           backgroundWorker.RunWorkerAsync();
+        }
+
+        // when cancel button is clicked, call this function
+        void _progressForm_Canceled(object sender, EventArgs e)
+        {
+            if (backgroundWorker.WorkerSupportsCancellation == true)
             {
-                RefreshFileGridViewOfCurrentDirectory();
-                MessageBox.Show("Completed.");
+                // Cancel the asynchronous operation.
+                backgroundWorker.CancelAsync();
+
+                // Close the AlertForm
+                _progressForm.Close();
+            }
+        }
+
+        void backgroundWorker_RunWorkerCompleted(object sender, System.ComponentModel.RunWorkerCompletedEventArgs e)
+        {
+            _progressForm.Close();
+        }
+
+        // When progress percent is changed, call this function
+        void backgroundWorker_ProgressChanged(object sender, System.ComponentModel.ProgressChangedEventArgs e)
+        {
+            // title caption
+            _progressForm.Text = "Translating " + _ftpController.CurrentTranslatingFile + "..." + " " + (e.ProgressPercentage.ToString() + "%");
+
+            // label
+            _progressForm.Message = _progressForm.Text;
+
+            // progress bar percent.
+            _progressForm.ProgressValue = e.ProgressPercentage;
+        }
+
+        // The backgroundWorker for upload and download
+        void backgroundWorker_DoWork(object sender, System.ComponentModel.DoWorkEventArgs e)
+        {
+            BackgroundWorker worker = sender as BackgroundWorker;
+
+            // Get files of ftp
+            string[] files;
+            if(_ftpController.Upload == false)
+                files   = ftpFileGridView.GetSelectedFiles();
+            else
+                files = fileGridView.GetSelectedFiles();
+
+        
+            // Translates files using ftpcontroler.
+            // BackgroundWorker will changed percent while translating files.
+            if (_ftpController.TranslateFiles(files, worker))
+            {
+                if (_ftpController.Upload == false)
+                    RefreshFileGridViewOfCurrentDirectory();
+                else
+                    RefreshFtpFileGridView();
+
+                if(worker.CancellationPending == true)
+                    MessageBox.Show("Canceled.");
+                else
+                    MessageBox.Show("Completed.");
             }
             else
             {
-                MessageBox.Show("Failded Download.");
+                MessageBox.Show("Failed.");
             }
         }
 

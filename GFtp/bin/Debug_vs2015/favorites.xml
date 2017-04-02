@@ -1,0 +1,21 @@
+<Favorites>
+	<Group name="Computer">
+		<Item name="Microsoft" address="ftp.microsoft.com" port="21" ></Item>
+		<Item name="Linux journal" address="ftp.ssc.com" port="21"></Item>
+		<Item name="RedHat linux" address="ftp.redhat.com" port="21"></Item>
+		<Item name="IBM PC Company" address="ftp.pc.ibm.com" port="21"></Item>
+		<Item name="Intel" address="ftp.intel.com" port="21"></Item>
+		<Item name="Iomega" address="ftp.iomega.com" port="21"></Item>
+		<Item name="Sony Corporation" address="ftp.sony.com" port="21"></Item>
+		<Item name="Apple Newton" address="ftp.apple.com" port="21"></Item>
+		<Item name="US Robotics Pilot" address="ftp.usr.com" port="21"></Item>
+		<Item name="Novell" address="ftp.novell.com" port="21"></Item>
+	</Group>
+	<Group name="Music">
+		<Item name="Classical Music" address="ftp.cs.ruu.nl" port="21"></Item>
+	</Group>
+	<Group name="Game">
+		<Item name="Lucas arts" address="ftp.lucasarts.com" port="21"></Item>
+		<Item name="Siera" address="ftp.sierra.com" port="21"></Item>
+	</Group>
+</Favorites>

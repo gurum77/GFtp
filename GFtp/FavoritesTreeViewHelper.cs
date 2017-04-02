@@ -19,7 +19,6 @@ namespace GFtp
 
             try
             {
-                List<FavoritesItem> items = null;
                 using (XmlWriter writer = XmlWriter.Create("favorites.xml", setting))
                 {
                     writer.WriteStartElement("Favorites");
