@@ -9,3 +9,14 @@ E:\GitHub\GFtp\GFtp\obj\Debug_vs2015\GFtp.csproj.GenerateResource.Cache
 E:\GitHub\GFtp\GFtp\obj\Debug_vs2015\GFtp.exe
 E:\GitHub\GFtp\GFtp\obj\Debug_vs2015\GFtp.pdb
 E:\GitHub\GFtp\GFtp\obj\Debug_vs2015\GFtp.ProgressForm.resources
+D:\GitHub\GFtp\GFtp\bin\Debug_vs2015\GFtp.exe.config
+D:\GitHub\GFtp\GFtp\obj\Debug_vs2015\GFtp.exe
+D:\GitHub\GFtp\GFtp\obj\Debug_vs2015\GFtp.pdb
+D:\GitHub\GFtp\GFtp\bin\Debug_vs2015\GFtp.exe
+D:\GitHub\GFtp\GFtp\bin\Debug_vs2015\GFtp.pdb
+D:\GitHub\GFtp\GFtp\bin\Debug_vs2015\WindowsExplorer.dll
+D:\GitHub\GFtp\GFtp\obj\Debug_vs2015\GFtp.csprojResolveAssemblyReference.cache
+D:\GitHub\GFtp\GFtp\obj\Debug_vs2015\GFtp.MainForm.resources
+D:\GitHub\GFtp\GFtp\obj\Debug_vs2015\GFtp.ProgressForm.resources
+D:\GitHub\GFtp\GFtp\obj\Debug_vs2015\GFtp.Properties.Resources.resources
+D:\GitHub\GFtp\GFtp\obj\Debug_vs2015\GFtp.csproj.GenerateResource.Cache

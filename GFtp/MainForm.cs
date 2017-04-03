@@ -338,12 +338,16 @@ namespace GFtp
 
                 // Close the AlertForm
                 _progressForm.Close();
+
+                RefreshFileGridViewOfCurrentDirectory();
             }
         }
 
         void backgroundWorker_RunWorkerCompleted(object sender, System.ComponentModel.RunWorkerCompletedEventArgs e)
         {
             _progressForm.Close();
+
+            RefreshFileGridViewOfCurrentDirectory();
         }
 
         // When progress percent is changed, call this function
