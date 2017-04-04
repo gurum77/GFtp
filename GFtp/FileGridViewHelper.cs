@@ -58,7 +58,13 @@ namespace GFtp
             int rowIndex = 0;
             foreach (GridFileInfo f in fileinfos)
             {
-                gridView.Rows[rowIndex].Height = 24;
+                try
+                {
+                    gridView.Rows[rowIndex].Height = 24;
+                }
+                catch
+                {
+                }
 
                 if (f != null)
                 {

@@ -133,7 +133,7 @@
             resources.ApplyResources(this.explorerTree, "explorerTree");
             this.explorerTree.BackColor = System.Drawing.Color.White;
             this.explorerTree.Name = "explorerTree";
-            this.explorerTree.SelectedPath = "C:\\Program Files (x86)\\Microsoft Visual Studio 14.0\\Common7\\IDE";
+            this.explorerTree.SelectedPath = "D:\\Program Files (x86)\\Microsoft Visual Studio 11.0\\Common7\\IDE";
             this.explorerTree.ShowAddressbar = true;
             this.explorerTree.ShowMyDocuments = true;
             this.explorerTree.ShowMyFavorites = true;

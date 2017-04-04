@@ -346,8 +346,6 @@ namespace GFtp
         void backgroundWorker_RunWorkerCompleted(object sender, System.ComponentModel.RunWorkerCompletedEventArgs e)
         {
             _progressForm.Close();
-
-            RefreshFileGridViewOfCurrentDirectory();
         }
 
         // When progress percent is changed, call this function
@@ -380,11 +378,6 @@ namespace GFtp
             // BackgroundWorker will changed percent while translating files.
             if (_ftpController.TranslateFiles(files, worker))
             {
-                if (_ftpController.Upload == false)
-                    RefreshFileGridViewOfCurrentDirectory();
-                else
-                    RefreshFtpFileGridView();
-
                 if(worker.CancellationPending == true)
                     MessageBox.Show("Canceled.");
                 else
@@ -394,6 +387,11 @@ namespace GFtp
             {
                 MessageBox.Show("Failed.");
             }
+
+            if (_ftpController.Upload == false)
+                RefreshFileGridViewOfCurrentDirectory();
+            else
+                RefreshFtpFileGridView();
         }
 
         // Called when changed path on explorerTree

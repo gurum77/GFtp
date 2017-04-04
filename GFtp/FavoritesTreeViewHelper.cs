@@ -128,7 +128,13 @@ namespace GFtp
                     itemNode.Text = item.Name;
 
                     ftpAddress.Address = item.Address;
-                    ftpAddress.Port = Convert.ToInt32(item.Port);
+                    try
+                    {
+                        ftpAddress.Port = Convert.ToInt32(item.Port);
+                    }
+                    catch
+                    {
+                    }
                     ftpAddress.Path = item.Path;
                     itemNode.ToolTipText = ftpAddress.GetFullAddress();
                     groupNode.Nodes.Add(itemNode);

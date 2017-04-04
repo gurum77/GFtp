@@ -139,8 +139,10 @@ namespace GFtp
                     }
                 }
             }
-            catch
+            catch(System.Exception e)
             {
+                MessageBox.Show(e.ToString());
+
                 return false;
             }
 
