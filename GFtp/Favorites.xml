@@ -18,4 +18,7 @@
 		<Item name="Lucas arts" address="ftp.lucasarts.com" port="21"></Item>
 		<Item name="Siera" address="ftp.sierra.com" port="21"></Item>
 	</Group>
+	<Group name="My">
+		<Item name="Hangil internet" address="192.168.0.232" port="21"></Item>
+	</Group>
 </Favorites>

@@ -24,6 +24,22 @@ namespace GFtp
             return files;
         }
 
+        // Select row by fileName
+        // todo : implement
+        static public void SelectFile(this DataGridView gridView, string fileName)
+        {
+            if (fileName == null)
+                return;
+
+            for(int ix = 0; ix < gridView.RowCount; ++ix)
+            {
+                string str = gridView.Rows[ix].Cells[0].Value.ToString();
+                if (str == fileName)
+                {
+                }
+            }
+        }
+
         // Display file to grid view
         static public void DisplayFiles(this DataGridView gridView, GridFileInfo[] fileinfos)
         {

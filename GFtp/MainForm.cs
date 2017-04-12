@@ -16,6 +16,7 @@ namespace GFtp
 {
     public partial class MainForm : Form
     {
+        string _beforeEditFileName; // file name before editing
         ProgressForm _progressForm;
         Favorites _favorites = new Favorites();
         FtpController _ftpController = new FtpController();
@@ -100,6 +101,8 @@ namespace GFtp
             DataGridViewCell cell = ftpFileGridView.CurrentCell;
             // Check clicked cell is file or folder
             bool isFolder = true;
+            if (ftpFileGridView.Rows[cell.RowIndex].Cells[2].Value == null)
+                return;
             if (ftpFileGridView.Rows[cell.RowIndex].Cells[2].Value.ToString() == "File")
                 isFolder = false;
 
@@ -435,6 +438,77 @@ namespace GFtp
             favoritesTreeView.SaveFavoritesItems(_favorites);
 
             RefreshFavoritesTreeView();
+        }
+        // when deleted a file in ftpFileGridView by user, call this
+        void ftpFileGridView_UserDeletingRow(object sender, System.Windows.Forms.DataGridViewRowCancelEventArgs e)
+        {
+            if (sender != ftpFileGridView)
+                return;
+
+            string[] files = ftpFileGridView.GetSelectedFiles();
+            _ftpController.DeleteFiles(files);
+
+            RefreshFtpFileGridView();
+            e.Cancel = true;
+        }
+
+        // when started to edit cell, call this
+        // Saves old file name
+        void fileGridView_CellBeginEdit(object sender, System.Windows.Forms.DataGridViewCellCancelEventArgs e)
+        {
+            if(sender != fileGridView)
+                return;
+
+            string[] files  = fileGridView.GetSelectedFiles();
+            if(files.Length > 1)
+                return;
+
+            _beforeEditFileName = files[0];
+        }
+
+
+        // when changed a text in fileGridView by user, call this
+        // Renames file name
+        void fileGridView_CellEndEdit(object sender, System.Windows.Forms.DataGridViewCellEventArgs e)
+        {
+            if (sender != fileGridView)
+                return;
+
+            string[] files = fileGridView.GetSelectedFiles();
+            if (files.Length > 1)
+                return;
+
+            string fromFilePathName = Path.Combine(CurrentDirectory, _beforeEditFileName);
+            string toFilePathName = Path.Combine(CurrentDirectory, files[0]);
+
+            try
+            {
+                System.IO.File.Move(fromFilePathName, toFilePathName);
+                RefreshFileGridViewOfCurrentDirectory();
+                fileGridView.SelectFile(files[0]);
+
+            }
+            catch
+            {
+                MessageBox.Show("Can't changed a file name.");
+            }
+        }
+        
+        // when deleted a file in fileGridView by user, call this
+        void fileGridView_UserDeletingRow(object sender, System.Windows.Forms.DataGridViewRowCancelEventArgs e)
+        {
+            if (sender != fileGridView)
+                return;
+
+            string[] files = fileGridView.GetSelectedFiles();
+            foreach (var fileName in files)
+            {
+                string filePath = Path.Combine(CurrentDirectory, fileName);
+                System.IO.File.Delete(filePath);
+            }
+
+            RefreshFileGridViewOfCurrentDirectory();
+            e.Cancel = true;
         }
     }
 }

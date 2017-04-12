@@ -76,6 +76,32 @@ namespace GFtp
             _progressBar = progressBar;
         }
 
+
+        // Deletes files in ftp
+        public bool DeleteFiles(string[] files)
+        {
+            try
+            {
+                foreach (var fileName in files)
+                {
+                    Uri ftpUri = new Uri(Ftp.GetFullAddress() + "/" + fileName);
+                    FtpWebRequest ftpReq = (FtpWebRequest)WebRequest.Create(ftpUri);
+                    ftpReq.Credentials = new NetworkCredential(ID, Password);
+                    ftpReq.Timeout = 30000; // 30 seconds timeout
+                    ftpReq.Method = WebRequestMethods.Ftp.DeleteFile;
+
+                    FtpWebResponse ftpRes = (FtpWebResponse)ftpReq.GetResponse();
+                    ftpRes.Close();
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.ToString());
+                return false;
+            }
+            return true;
+        }
+
         // Translate files from local to ftp or from ftp to local
         public bool TranslateFiles(string[] files, BackgroundWorker worker)
         {
@@ -94,6 +120,7 @@ namespace GFtp
             // connect ftp
             WebClient wc = new WebClient { Proxy = null };
             wc.BaseAddress = Ftp.GetFullAddress();
+            
             if (ID != "" && Password != "")
             {
                 wc.Credentials = new NetworkCredential(ID, Password);

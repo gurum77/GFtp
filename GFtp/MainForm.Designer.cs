@@ -100,12 +100,15 @@
             this.fileGridView.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.fileGridView.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.None;
             this.fileGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
-            this.fileGridView.EditMode = System.Windows.Forms.DataGridViewEditMode.EditProgrammatically;
+            this.fileGridView.EditMode = System.Windows.Forms.DataGridViewEditMode.EditOnF2;
             this.fileGridView.GridColor = System.Drawing.SystemColors.ControlLight;
             this.fileGridView.Name = "fileGridView";
             this.fileGridView.RowTemplate.Height = 27;
             this.fileGridView.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.CellSelect;
             this.fileGridView.ShowEditingIcon = false;
+            this.fileGridView.UserDeletingRow += fileGridView_UserDeletingRow;
+            this.fileGridView.CellEndEdit += fileGridView_CellEndEdit;
+            this.fileGridView.CellBeginEdit += fileGridView_CellBeginEdit;
             // 
             // ftpFileGridView
             // 
@@ -114,12 +117,13 @@
             this.ftpFileGridView.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.ftpFileGridView.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.None;
             this.ftpFileGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
-            this.ftpFileGridView.EditMode = System.Windows.Forms.DataGridViewEditMode.EditProgrammatically;
+            this.ftpFileGridView.EditMode = System.Windows.Forms.DataGridViewEditMode.EditOnF2;
             this.ftpFileGridView.GridColor = System.Drawing.SystemColors.ControlLight;
             this.ftpFileGridView.Name = "ftpFileGridView";
             this.ftpFileGridView.RowTemplate.Height = 27;
             this.ftpFileGridView.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.CellSelect;
             this.ftpFileGridView.ShowEditingIcon = false;
+            this.ftpFileGridView.UserDeletingRow += ftpFileGridView_UserDeletingRow;
             // 
             // progressBar
             // 
@@ -351,7 +355,10 @@
 
         }
 
-     
+
+        
+
+        
 
         
 
