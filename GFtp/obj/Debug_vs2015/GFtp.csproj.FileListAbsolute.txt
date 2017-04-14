@@ -15,7 +15,6 @@ D:\GitHub\GFtp\GFtp\obj\Debug_vs2015\GFtp.pdb
 D:\GitHub\GFtp\GFtp\bin\Debug_vs2015\GFtp.exe
 D:\GitHub\GFtp\GFtp\bin\Debug_vs2015\GFtp.pdb
 D:\GitHub\GFtp\GFtp\bin\Debug_vs2015\WindowsExplorer.dll
-D:\GitHub\GFtp\GFtp\obj\Debug_vs2015\GFtp.csprojResolveAssemblyReference.cache
 D:\GitHub\GFtp\GFtp\obj\Debug_vs2015\GFtp.MainForm.resources
 D:\GitHub\GFtp\GFtp\obj\Debug_vs2015\GFtp.ProgressForm.resources
 D:\GitHub\GFtp\GFtp\obj\Debug_vs2015\GFtp.Properties.Resources.resources

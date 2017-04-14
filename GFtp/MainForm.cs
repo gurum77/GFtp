@@ -49,19 +49,6 @@ namespace GFtp
             get { return _ftpController.Password; }
         }
 
-        // Get a ProgressBar for translating files.
-        ProgressBar GetProgressBar()
-        {
-            if (_progressForm == null)
-                return null;
-
-            bool useProgressForm = true;
-            if (useProgressForm)
-                return _progressForm.GetProgressBar();
-
-            return progressBar;
-        }
-  
         public MainForm()
         {
             InitializeComponent();
@@ -166,7 +153,7 @@ namespace GFtp
         void DefaultFieldValue()
         {
             CurrentDirectory = Directory.GetCurrentDirectory();
-            _ftpController.Init(@"ftp://ftp.novell.com", 21, "",  "", "", null);
+            _ftpController.Init(@"ftp://ftp.novell.com", 21, "", usePassiveCheckBox.Checked, "", "", null);
         }
 
         // Display default field value to controls.
@@ -282,6 +269,7 @@ namespace GFtp
             // Start a DoWork function of background work .
             _ftpController.Upload = true;
             backgroundWorker.RunWorkerAsync();
+
         }
 
         // Connect to ftp
@@ -310,7 +298,7 @@ namespace GFtp
 
             }
            
-            _ftpController.Init(ftpAddressTextBox.Text, port, pathTextBox.Text, idTextBox.Text, passwordTextBox.Text, null);
+            _ftpController.Init(ftpAddressTextBox.Text, port, pathTextBox.Text, usePassiveCheckBox.Checked, idTextBox.Text, passwordTextBox.Text, null);
             
             // Connet to the ftp and get all file list.
             RefreshFtpFileGridView();
@@ -342,13 +330,24 @@ namespace GFtp
                 // Close the AlertForm
                 _progressForm.Close();
 
-                RefreshFileGridViewOfCurrentDirectory();
+                // Refreshs ftp file grid view.
+                if (_ftpController.Upload)
+                    RefreshFtpFileGridView();
+                else
+                    RefreshFileGridViewOfCurrentDirectory();
             }
         }
 
         void backgroundWorker_RunWorkerCompleted(object sender, System.ComponentModel.RunWorkerCompletedEventArgs e)
         {
             _progressForm.Close();
+
+
+            // Refreshs ftp file grid view.
+            if (_ftpController.Upload)
+                RefreshFtpFileGridView();
+            else
+                RefreshFileGridViewOfCurrentDirectory();
         }
 
         // When progress percent is changed, call this function
@@ -390,11 +389,6 @@ namespace GFtp
             {
                 MessageBox.Show("Failed.");
             }
-
-            if (_ftpController.Upload == false)
-                RefreshFileGridViewOfCurrentDirectory();
-            else
-                RefreshFtpFileGridView();
         }
 
         // Called when changed path on explorerTree
@@ -439,76 +433,6 @@ namespace GFtp
 
             RefreshFavoritesTreeView();
         }
-        // when deleted a file in ftpFileGridView by user, call this
-        void ftpFileGridView_UserDeletingRow(object sender, System.Windows.Forms.DataGridViewRowCancelEventArgs e)
-        {
-            if (sender != ftpFileGridView)
-                return;
-
-            string[] files = ftpFileGridView.GetSelectedFiles();
-            _ftpController.DeleteFiles(files);
-
-            RefreshFtpFileGridView();
-            e.Cancel = true;
-        }
-
-        // when started to edit cell, call this
-        // Saves old file name
-        void fileGridView_CellBeginEdit(object sender, System.Windows.Forms.DataGridViewCellCancelEventArgs e)
-        {
-            if(sender != fileGridView)
-                return;
-
-            string[] files  = fileGridView.GetSelectedFiles();
-            if(files.Length > 1)
-                return;
-
-            _beforeEditFileName = files[0];
-        }
-
-
-        // when changed a text in fileGridView by user, call this
-        // Renames file name
-        void fileGridView_CellEndEdit(object sender, System.Windows.Forms.DataGridViewCellEventArgs e)
-        {
-            if (sender != fileGridView)
-                return;
-
-            string[] files = fileGridView.GetSelectedFiles();
-            if (files.Length > 1)
-                return;
-
-            string fromFilePathName = Path.Combine(CurrentDirectory, _beforeEditFileName);
-            string toFilePathName = Path.Combine(CurrentDirectory, files[0]);
-
-            try
-            {
-                System.IO.File.Move(fromFilePathName, toFilePathName);
-                RefreshFileGridViewOfCurrentDirectory();
-                fileGridView.SelectFile(files[0]);
-
-            }
-            catch
-            {
-                MessageBox.Show("Can't changed a file name.");
-            }
-        }
-        
-        // when deleted a file in fileGridView by user, call this
-        void fileGridView_UserDeletingRow(object sender, System.Windows.Forms.DataGridViewRowCancelEventArgs e)
-        {
-            if (sender != fileGridView)
-                return;
-
-            string[] files = fileGridView.GetSelectedFiles();
-            foreach (var fileName in files)
-            {
-                string filePath = Path.Combine(CurrentDirectory, fileName);
-                System.IO.File.Delete(filePath);
-            }
-
-            RefreshFileGridViewOfCurrentDirectory();
-            e.Cancel = true;
-        }
+      
     }
 }

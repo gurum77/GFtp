@@ -45,6 +45,7 @@ namespace GFtp
         public FtpAddress Ftp { get; set; }
         public string ID { get; private set; }
         public string Password { get; private set; }
+        public bool UsePassive { get; set; }
         public System.Windows.Forms.ProgressBar _progressBar    = null;
 
         // When the Form1 is loaded, display directory list to directoryTreeView control.
@@ -60,22 +61,56 @@ namespace GFtp
         public FtpController()
         {
             CurrentDirectory = @"c:\";
+            UsePassive = true;
             Ftp = new FtpAddress();
         }
 
         // constructor of FtpController
-        public void Init(string ftpAddress, int port, string ftpPath, string id, string password, System.Windows.Forms.ProgressBar progressBar)
+        public void Init(string ftpAddress, int port, string ftpPath, bool usePassive, string id, string password, System.Windows.Forms.ProgressBar progressBar)
         {
             Ftp.Address = ftpAddress;
             Ftp.Port = port;
             Ftp.Path = ftpPath;
-            
+
+            UsePassive  = usePassive;
+
             ID = id;
             Password = password;
 
             _progressBar = progressBar;
         }
 
+        // Creates a FtpWebRequest without method like.
+        private FtpWebRequest CreateFtpWebRequest(Uri ftpUri)
+        {
+            FtpWebRequest ftpReq = (FtpWebRequest)WebRequest.Create(ftpUri);
+            ftpReq.UsePassive = UsePassive;
+            ftpReq.Credentials = new NetworkCredential(ID, Password);
+            ftpReq.Timeout = 30000; // 30 seconds timeout
+
+            return ftpReq;
+        }
+        // Renames file in ftp
+        public bool RenameFile(string oldFileName, string newFileName)
+        {
+            try
+            {
+                Uri ftpUri = new Uri(Ftp.GetFullAddress() + "/" + oldFileName);
+                FtpWebRequest ftpReq = CreateFtpWebRequest(ftpUri);
+                ftpReq.Method = WebRequestMethods.Ftp.Rename;
+                ftpReq.RenameTo = newFileName;
+
+                FtpWebResponse ftpRes = (FtpWebResponse)ftpReq.GetResponse();
+                ftpRes.Close();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.ToString());
+                return false;
+            }
+
+            return true;
+        }
 
         // Deletes files in ftp
         public bool DeleteFiles(string[] files)
@@ -85,9 +120,7 @@ namespace GFtp
                 foreach (var fileName in files)
                 {
                     Uri ftpUri = new Uri(Ftp.GetFullAddress() + "/" + fileName);
-                    FtpWebRequest ftpReq = (FtpWebRequest)WebRequest.Create(ftpUri);
-                    ftpReq.Credentials = new NetworkCredential(ID, Password);
-                    ftpReq.Timeout = 30000; // 30 seconds timeout
+                    FtpWebRequest ftpReq = CreateFtpWebRequest(ftpUri);
                     ftpReq.Method = WebRequestMethods.Ftp.DeleteFile;
 
                     FtpWebResponse ftpRes = (FtpWebResponse)ftpReq.GetResponse();
@@ -162,7 +195,7 @@ namespace GFtp
                     // download
                     else
                     {
-                        wc.DownloadFile(filename, pathName);
+                        wc.DownloadFile(ftpPathName, pathName);
                     }
                 }
             }
@@ -187,9 +220,7 @@ namespace GFtp
             try
             {
                 Uri ftpUri = new Uri(ftpAddr);
-                FtpWebRequest ftpReq = (FtpWebRequest)WebRequest.Create(ftpUri);
-                ftpReq.Credentials = new NetworkCredential(id, password);
-                ftpReq.Timeout = 30000; // 30 seconds timeout
+                FtpWebRequest ftpReq = CreateFtpWebRequest(ftpUri);
                 ftpReq.Method = WebRequestMethods.Ftp.ListDirectoryDetails;
                             
                 FtpWebResponse ftpRes = (FtpWebResponse)ftpReq.GetResponse();
