@@ -14,6 +14,7 @@ namespace GFtp
         public string Path { get; set; }
         public string ID { get; set; }
         public string Password { get; set; }
+        public string PassiveMode { get; set; }
 
     }
 }

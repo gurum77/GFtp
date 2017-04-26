@@ -36,7 +36,7 @@
             this.favoritesTreeView = new System.Windows.Forms.TreeView();
             this.verticalSplitContainer = new System.Windows.Forms.SplitContainer();
             this.leftSplitContainer = new System.Windows.Forms.SplitContainer();
-            this.usePassiveCheckBox = new System.Windows.Forms.CheckBox();
+            this.passiveModeCheckBox = new System.Windows.Forms.CheckBox();
             this.label5 = new System.Windows.Forms.Label();
             this.pathTextBox = new System.Windows.Forms.TextBox();
             this.delButton = new System.Windows.Forms.Button();
@@ -80,7 +80,6 @@
             this.toFtpButton.ForeColor = System.Drawing.Color.White;
             this.toFtpButton.Name = "toFtpButton";
             this.toFtpButton.UseVisualStyleBackColor = false;
-            this.toFtpButton.Click += new System.EventHandler(this.UploadToFtpButton_Click);
             // 
             // fromFtpButton
             // 
@@ -89,7 +88,6 @@
             this.fromFtpButton.ForeColor = System.Drawing.Color.White;
             this.fromFtpButton.Name = "fromFtpButton";
             this.fromFtpButton.UseVisualStyleBackColor = false;
-            this.fromFtpButton.Click += new System.EventHandler(this.downloadFromFtpButton_Click);
             // 
             // fileGridView
             // 
@@ -110,13 +108,12 @@
             resources.ApplyResources(this.explorerTree, "explorerTree");
             this.explorerTree.BackColor = System.Drawing.Color.White;
             this.explorerTree.Name = "explorerTree";
-            this.explorerTree.SelectedPath = "C:\\Program Files (x86)\\Microsoft Visual Studio 14.0\\Common7\\IDE";
+            this.explorerTree.SelectedPath = "D:\\Program Files (x86)\\Microsoft Visual Studio 11.0\\Common7\\IDE";
             this.explorerTree.ShowAddressbar = true;
             this.explorerTree.ShowMyDocuments = true;
             this.explorerTree.ShowMyFavorites = true;
             this.explorerTree.ShowMyNetwork = true;
             this.explorerTree.ShowToolbar = true;
-            this.explorerTree.PathChanged += new WindowsExplorer.ExplorerTree.PathChangedEventHandler(this.explorerTree_PathChanged);
             // 
             // favoritesTreeView
             // 
@@ -147,7 +144,7 @@
             // 
             // leftSplitContainer.Panel1
             // 
-            this.leftSplitContainer.Panel1.Controls.Add(this.usePassiveCheckBox);
+            this.leftSplitContainer.Panel1.Controls.Add(this.passiveModeCheckBox);
             this.leftSplitContainer.Panel1.Controls.Add(this.label5);
             this.leftSplitContainer.Panel1.Controls.Add(this.pathTextBox);
             this.leftSplitContainer.Panel1.Controls.Add(this.delButton);
@@ -173,9 +170,9 @@
             // 
             // usePassiveCheckBox
             // 
-            resources.ApplyResources(this.usePassiveCheckBox, "usePassiveCheckBox");
-            this.usePassiveCheckBox.Name = "usePassiveCheckBox";
-            this.usePassiveCheckBox.UseVisualStyleBackColor = true;
+            resources.ApplyResources(this.passiveModeCheckBox, "usePassiveCheckBox");
+            this.passiveModeCheckBox.Name = "usePassiveCheckBox";
+            this.passiveModeCheckBox.UseVisualStyleBackColor = true;
             // 
             // label5
             // 
@@ -303,9 +300,6 @@
             // 
             this.backgroundWorker.WorkerReportsProgress = true;
             this.backgroundWorker.WorkerSupportsCancellation = true;
-            this.backgroundWorker.DoWork += new System.ComponentModel.DoWorkEventHandler(this.backgroundWorker_DoWork);
-            this.backgroundWorker.ProgressChanged += new System.ComponentModel.ProgressChangedEventHandler(this.backgroundWorker_ProgressChanged);
-            this.backgroundWorker.RunWorkerCompleted += new System.ComponentModel.RunWorkerCompletedEventHandler(this.backgroundWorker_RunWorkerCompleted);
             // 
             // MainForm
             // 
@@ -316,7 +310,6 @@
             this.Controls.Add(this.toFtpButton);
             this.Controls.Add(this.verticalSplitContainer);
             this.Name = "MainForm";
-            this.Load += new System.EventHandler(this.Form1_Load);
             ((System.ComponentModel.ISupportInitialize)(this.fileGridView)).EndInit();
             this.verticalSplitContainer.Panel1.ResumeLayout(false);
             this.verticalSplitContainer.Panel2.ResumeLayout(false);
@@ -374,7 +367,7 @@
         private System.Windows.Forms.SplitContainer rightSplitContainer;
         private System.Windows.Forms.SplitContainer leftSplitContainer;
         private System.ComponentModel.BackgroundWorker backgroundWorker;
-        private System.Windows.Forms.CheckBox usePassiveCheckBox;
+        private System.Windows.Forms.CheckBox passiveModeCheckBox;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.TextBox pathTextBox;
         private System.Windows.Forms.Button delButton;

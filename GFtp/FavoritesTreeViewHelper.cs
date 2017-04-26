@@ -38,6 +38,7 @@ namespace GFtp
                             writer.WriteAttributeString("path", item.Path);
                             writer.WriteAttributeString("id", item.ID);
                             writer.WriteAttributeString("password", item.Password);
+                            writer.WriteAttributeString("passivemode", item.PassiveMode);
                             writer.WriteEndElement();
                         }
                         writer.WriteEndElement();
@@ -92,6 +93,7 @@ namespace GFtp
                                 item.Path = reader.GetAttribute("path");
                                 item.ID = reader.GetAttribute("id");
                                 item.Password   = reader.GetAttribute("password");
+                                item.PassiveMode = reader.GetAttribute("passivemode");
                                 
                                 items.Add(item);
                             }

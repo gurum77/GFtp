@@ -68,6 +68,7 @@ namespace GFtp
             catch
             {
                 MessageBox.Show("Can't changed a file name.");
+                RefreshFileGridViewOfCurrentDirectory();
             }
         }
 
@@ -89,7 +90,7 @@ namespace GFtp
         }
 
         // When finish userediting ftp file grid view, call this
-        private void FtpFileGridView_CellEndEdit(object sender, System.Windows.Forms.DataGridViewCellEventArgs e)
+        private void ftpFileGridView_CellEndEdit(object sender, System.Windows.Forms.DataGridViewCellEventArgs e)
         {
             if (sender != ftpFileGridView)
                 return;
@@ -111,7 +112,7 @@ namespace GFtp
             }
         }
 
-        private void FtpFileGridView_CellBeginEdit(object sender, System.Windows.Forms.DataGridViewCellCancelEventArgs e)
+        private void ftpFileGridView_CellBeginEdit(object sender, System.Windows.Forms.DataGridViewCellCancelEventArgs e)
         {
             if (sender != ftpFileGridView)
                 return;
@@ -122,7 +123,5 @@ namespace GFtp
 
             _beforeEditFileName = files[0];
         }
-
-
     }
 }

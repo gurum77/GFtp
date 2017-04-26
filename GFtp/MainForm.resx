@@ -123,16 +123,13 @@
   </data>
   <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
   <data name="toFtpButton.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Dotum, 9pt, style=Bold</value>
+    <value>돋움, 9pt, style=Bold</value>
   </data>
   <data name="toFtpButton.Location" type="System.Drawing.Point, System.Drawing">
-    <value>12, 8</value>
-  </data>
-  <data name="toFtpButton.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>3, 4, 3, 4</value>
+    <value>10, 6</value>
   </data>
   <data name="toFtpButton.Size" type="System.Drawing.Size, System.Drawing">
-    <value>107, 34</value>
+    <value>94, 27</value>
   </data>
   <assembly alias="mscorlib" name="mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
   <data name="toFtpButton.TabIndex" type="System.Int32, mscorlib">
@@ -157,16 +154,13 @@
     <value>Flat</value>
   </data>
   <data name="fromFtpButton.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Dotum, 9pt, style=Bold</value>
+    <value>돋움, 9pt, style=Bold</value>
   </data>
   <data name="fromFtpButton.Location" type="System.Drawing.Point, System.Drawing">
-    <value>125, 8</value>
-  </data>
-  <data name="fromFtpButton.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>3, 4, 3, 4</value>
+    <value>109, 6</value>
   </data>
   <data name="fromFtpButton.Size" type="System.Drawing.Size, System.Drawing">
-    <value>107, 34</value>
+    <value>94, 27</value>
   </data>
   <data name="fromFtpButton.TabIndex" type="System.Int32, mscorlib">
     <value>13</value>
@@ -195,11 +189,8 @@
   <data name="fileGridView.Location" type="System.Drawing.Point, System.Drawing">
     <value>1, 0</value>
   </data>
-  <data name="fileGridView.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>3, 4, 3, 4</value>
-  </data>
   <data name="fileGridView.Size" type="System.Drawing.Size, System.Drawing">
-    <value>997, 456</value>
+    <value>893, 387</value>
   </data>
   <data name="fileGridView.TabIndex" type="System.Int32, mscorlib">
     <value>15</value>
@@ -220,13 +211,10 @@
     <value>Top, Bottom, Left, Right</value>
   </data>
   <data name="explorerTree.Location" type="System.Drawing.Point, System.Drawing">
-    <value>-1, 4</value>
-  </data>
-  <data name="explorerTree.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>3, 4, 3, 4</value>
+    <value>-1, 3</value>
   </data>
   <data name="explorerTree.Size" type="System.Drawing.Size, System.Drawing">
-    <value>408, 406</value>
+    <value>358, 324</value>
   </data>
   <data name="explorerTree.TabIndex" type="System.Int32, mscorlib">
     <value>18</value>
@@ -247,13 +235,10 @@
     <value>Top, Bottom, Left, Right</value>
   </data>
   <data name="favoritesTreeView.Location" type="System.Drawing.Point, System.Drawing">
-    <value>-1, 228</value>
-  </data>
-  <data name="favoritesTreeView.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>3, 4, 3, 4</value>
+    <value>-1, 182</value>
   </data>
   <data name="favoritesTreeView.Size" type="System.Drawing.Size, System.Drawing">
-    <value>409, 177</value>
+    <value>361, 141</value>
   </data>
   <data name="favoritesTreeView.TabIndex" type="System.Int32, mscorlib">
     <value>20</value>
@@ -274,7 +259,7 @@
     <value>Top, Bottom, Left, Right</value>
   </data>
   <data name="verticalSplitContainer.Location" type="System.Drawing.Point, System.Drawing">
-    <value>9, 54</value>
+    <value>8, 43</value>
   </data>
   <data name="verticalSplitContainer.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>3, 2, 3, 2</value>
@@ -301,10 +286,13 @@
     <value>NoControl</value>
   </data>
   <data name="usePassiveCheckBox.Location" type="System.Drawing.Point, System.Drawing">
-    <value>277, 92</value>
+    <value>248, 74</value>
+  </data>
+  <data name="usePassiveCheckBox.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>3, 2, 3, 2</value>
   </data>
   <data name="usePassiveCheckBox.Size" type="System.Drawing.Size, System.Drawing">
-    <value>119, 19</value>
+    <value>101, 16</value>
   </data>
   <data name="usePassiveCheckBox.TabIndex" type="System.Int32, mscorlib">
     <value>43</value>
@@ -331,10 +319,10 @@
     <value>NoControl</value>
   </data>
   <data name="label5.Location" type="System.Drawing.Point, System.Drawing">
-    <value>32, 92</value>
+    <value>28, 74</value>
   </data>
   <data name="label5.Size" type="System.Drawing.Size, System.Drawing">
-    <value>37, 15</value>
+    <value>30, 12</value>
   </data>
   <data name="label5.TabIndex" type="System.Int32, mscorlib">
     <value>42</value>
@@ -358,13 +346,10 @@
     <value>Top, Left, Right</value>
   </data>
   <data name="pathTextBox.Location" type="System.Drawing.Point, System.Drawing">
-    <value>74, 89</value>
-  </data>
-  <data name="pathTextBox.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>3, 4, 3, 4</value>
+    <value>65, 71</value>
   </data>
   <data name="pathTextBox.Size" type="System.Drawing.Size, System.Drawing">
-    <value>195, 25</value>
+    <value>174, 21</value>
   </data>
   <data name="pathTextBox.TabIndex" type="System.Int32, mscorlib">
     <value>30</value>
@@ -385,19 +370,16 @@
     <value>Flat</value>
   </data>
   <data name="delButton.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Dotum, 9pt, style=Bold</value>
+    <value>돋움, 9pt, style=Bold</value>
   </data>
   <data name="delButton.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
   </data>
   <data name="delButton.Location" type="System.Drawing.Point, System.Drawing">
-    <value>201, 185</value>
-  </data>
-  <data name="delButton.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>3, 4, 3, 4</value>
+    <value>176, 148</value>
   </data>
   <data name="delButton.Size" type="System.Drawing.Size, System.Drawing">
-    <value>111, 31</value>
+    <value>97, 25</value>
   </data>
   <data name="delButton.TabIndex" type="System.Int32, mscorlib">
     <value>38</value>
@@ -421,13 +403,10 @@
     <value>Top, Left, Right</value>
   </data>
   <data name="nameTextBox.Location" type="System.Drawing.Point, System.Drawing">
-    <value>297, 21</value>
-  </data>
-  <data name="nameTextBox.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>3, 4, 3, 4</value>
+    <value>260, 17</value>
   </data>
   <data name="nameTextBox.Size" type="System.Drawing.Size, System.Drawing">
-    <value>89, 25</value>
+    <value>81, 21</value>
   </data>
   <data name="nameTextBox.TabIndex" type="System.Int32, mscorlib">
     <value>27</value>
@@ -448,19 +427,16 @@
     <value>Flat</value>
   </data>
   <data name="addButton.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Dotum, 9pt, style=Bold</value>
+    <value>돋움, 9pt, style=Bold</value>
   </data>
   <data name="addButton.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
   </data>
   <data name="addButton.Location" type="System.Drawing.Point, System.Drawing">
-    <value>84, 185</value>
-  </data>
-  <data name="addButton.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>3, 4, 3, 4</value>
+    <value>74, 148</value>
   </data>
   <data name="addButton.Size" type="System.Drawing.Size, System.Drawing">
-    <value>111, 31</value>
+    <value>97, 25</value>
   </data>
   <data name="addButton.TabIndex" type="System.Int32, mscorlib">
     <value>37</value>
@@ -487,10 +463,10 @@
     <value>NoControl</value>
   </data>
   <data name="nameLabel.Location" type="System.Drawing.Point, System.Drawing">
-    <value>247, 25</value>
+    <value>216, 20</value>
   </data>
   <data name="nameLabel.Size" type="System.Drawing.Size, System.Drawing">
-    <value>43, 15</value>
+    <value>39, 12</value>
   </data>
   <data name="nameLabel.TabIndex" type="System.Int32, mscorlib">
     <value>41</value>
@@ -511,13 +487,10 @@
     <value>6</value>
   </data>
   <data name="groupTextBox.Location" type="System.Drawing.Point, System.Drawing">
-    <value>74, 21</value>
-  </data>
-  <data name="groupTextBox.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>3, 4, 3, 4</value>
+    <value>65, 17</value>
   </data>
   <data name="groupTextBox.Size" type="System.Drawing.Size, System.Drawing">
-    <value>146, 25</value>
+    <value>128, 21</value>
   </data>
   <data name="groupTextBox.TabIndex" type="System.Int32, mscorlib">
     <value>26</value>
@@ -541,10 +514,10 @@
     <value>NoControl</value>
   </data>
   <data name="groupLabel.Location" type="System.Drawing.Point, System.Drawing">
-    <value>22, 25</value>
+    <value>19, 20</value>
   </data>
   <data name="groupLabel.Size" type="System.Drawing.Size, System.Drawing">
-    <value>47, 15</value>
+    <value>39, 12</value>
   </data>
   <data name="groupLabel.TabIndex" type="System.Int32, mscorlib">
     <value>40</value>
@@ -568,13 +541,10 @@
     <value>Top, Right</value>
   </data>
   <data name="portTextBox.Location" type="System.Drawing.Point, System.Drawing">
-    <value>313, 60</value>
-  </data>
-  <data name="portTextBox.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>3, 4, 3, 4</value>
+    <value>277, 48</value>
   </data>
   <data name="portTextBox.Size" type="System.Drawing.Size, System.Drawing">
-    <value>73, 25</value>
+    <value>64, 21</value>
   </data>
   <data name="portTextBox.TabIndex" type="System.Int32, mscorlib">
     <value>29</value>
@@ -604,10 +574,10 @@
     <value>NoControl</value>
   </data>
   <data name="label4.Location" type="System.Drawing.Point, System.Drawing">
-    <value>274, 62</value>
+    <value>243, 50</value>
   </data>
   <data name="label4.Size" type="System.Drawing.Size, System.Drawing">
-    <value>34, 15</value>
+    <value>27, 12</value>
   </data>
   <data name="label4.TabIndex" type="System.Int32, mscorlib">
     <value>39</value>
@@ -631,13 +601,10 @@
     <value>Top, Left, Right</value>
   </data>
   <data name="ftpAddressTextBox.Location" type="System.Drawing.Point, System.Drawing">
-    <value>74, 60</value>
-  </data>
-  <data name="ftpAddressTextBox.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>3, 4, 3, 4</value>
+    <value>65, 48</value>
   </data>
   <data name="ftpAddressTextBox.Size" type="System.Drawing.Size, System.Drawing">
-    <value>194, 25</value>
+    <value>173, 21</value>
   </data>
   <data name="ftpAddressTextBox.TabIndex" type="System.Int32, mscorlib">
     <value>28</value>
@@ -658,13 +625,10 @@
     <value>Top, Left, Right</value>
   </data>
   <data name="idTextBox.Location" type="System.Drawing.Point, System.Drawing">
-    <value>74, 122</value>
-  </data>
-  <data name="idTextBox.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>3, 4, 3, 4</value>
+    <value>65, 98</value>
   </data>
   <data name="idTextBox.Size" type="System.Drawing.Size, System.Drawing">
-    <value>312, 25</value>
+    <value>277, 21</value>
   </data>
   <data name="idTextBox.TabIndex" type="System.Int32, mscorlib">
     <value>31</value>
@@ -685,16 +649,13 @@
     <value>Top, Left, Right</value>
   </data>
   <data name="passwordTextBox.Location" type="System.Drawing.Point, System.Drawing">
-    <value>74, 152</value>
-  </data>
-  <data name="passwordTextBox.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>3, 4, 3, 4</value>
+    <value>65, 122</value>
   </data>
   <data name="passwordTextBox.PasswordChar" type="System.Char, mscorlib" xml:space="preserve">
     <value>*</value>
   </data>
   <data name="passwordTextBox.Size" type="System.Drawing.Size, System.Drawing">
-    <value>195, 25</value>
+    <value>174, 21</value>
   </data>
   <data name="passwordTextBox.TabIndex" type="System.Int32, mscorlib">
     <value>33</value>
@@ -718,10 +679,10 @@
     <value>NoControl</value>
   </data>
   <data name="label1.Location" type="System.Drawing.Point, System.Drawing">
-    <value>12, 66</value>
+    <value>10, 53</value>
   </data>
   <data name="label1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>60, 15</value>
+    <value>52, 12</value>
   </data>
   <data name="label1.TabIndex" type="System.Int32, mscorlib">
     <value>32</value>
@@ -748,7 +709,7 @@
     <value>Flat</value>
   </data>
   <data name="connectionButton.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Dotum, 9pt, style=Bold</value>
+    <value>돋움, 9pt, style=Bold</value>
   </data>
   <data name="connectionButton.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
@@ -773,13 +734,10 @@
     <value>NoControl</value>
   </data>
   <data name="connectionButton.Location" type="System.Drawing.Point, System.Drawing">
-    <value>275, 147</value>
-  </data>
-  <data name="connectionButton.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>3, 4, 3, 4</value>
+    <value>244, 118</value>
   </data>
   <data name="connectionButton.Size" type="System.Drawing.Size, System.Drawing">
-    <value>111, 31</value>
+    <value>97, 25</value>
   </data>
   <data name="connectionButton.TabIndex" type="System.Int32, mscorlib">
     <value>34</value>
@@ -809,10 +767,10 @@
     <value>NoControl</value>
   </data>
   <data name="label2.Location" type="System.Drawing.Point, System.Drawing">
-    <value>47, 130</value>
+    <value>41, 104</value>
   </data>
   <data name="label2.Size" type="System.Drawing.Size, System.Drawing">
-    <value>20, 15</value>
+    <value>16, 12</value>
   </data>
   <data name="label2.TabIndex" type="System.Int32, mscorlib">
     <value>35</value>
@@ -839,10 +797,10 @@
     <value>NoControl</value>
   </data>
   <data name="label3.Location" type="System.Drawing.Point, System.Drawing">
-    <value>32, 158</value>
+    <value>28, 126</value>
   </data>
   <data name="label3.Size" type="System.Drawing.Size, System.Drawing">
-    <value>37, 15</value>
+    <value>29, 12</value>
   </data>
   <data name="label3.TabIndex" type="System.Int32, mscorlib">
     <value>36</value>
@@ -887,10 +845,13 @@
     <value>1</value>
   </data>
   <data name="leftSplitContainer.Size" type="System.Drawing.Size, System.Drawing">
-    <value>410, 826</value>
+    <value>362, 661</value>
   </data>
   <data name="leftSplitContainer.SplitterDistance" type="System.Int32, mscorlib">
-    <value>411</value>
+    <value>328</value>
+  </data>
+  <data name="leftSplitContainer.SplitterWidth" type="System.Int32, mscorlib">
+    <value>3</value>
   </data>
   <data name="leftSplitContainer.TabIndex" type="System.Int32, mscorlib">
     <value>21</value>
@@ -940,11 +901,8 @@
   <data name="ftpFileGridView.Location" type="System.Drawing.Point, System.Drawing">
     <value>-1, 0</value>
   </data>
-  <data name="ftpFileGridView.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>3, 4, 3, 4</value>
-  </data>
   <data name="ftpFileGridView.Size" type="System.Drawing.Size, System.Drawing">
-    <value>1018, 333</value>
+    <value>895, 265</value>
   </data>
   <data name="ftpFileGridView.TabIndex" type="System.Int32, mscorlib">
     <value>16</value>
@@ -986,10 +944,13 @@
     <value>1</value>
   </data>
   <data name="rightSplitContainer.Size" type="System.Drawing.Size, System.Drawing">
-    <value>1019, 847</value>
+    <value>899, 676</value>
   </data>
   <data name="rightSplitContainer.SplitterDistance" type="System.Int32, mscorlib">
-    <value>334</value>
+    <value>266</value>
+  </data>
+  <data name="rightSplitContainer.SplitterWidth" type="System.Int32, mscorlib">
+    <value>3</value>
   </data>
   <data name="rightSplitContainer.TabIndex" type="System.Int32, mscorlib">
     <value>18</value>
@@ -1019,13 +980,10 @@
     <value>1</value>
   </data>
   <data name="verticalSplitContainer.Size" type="System.Drawing.Size, System.Drawing">
-    <value>1450, 826</value>
+    <value>1282, 661</value>
   </data>
   <data name="verticalSplitContainer.SplitterDistance" type="System.Int32, mscorlib">
-    <value>409</value>
-  </data>
-  <data name="verticalSplitContainer.SplitterWidth" type="System.Int32, mscorlib">
-    <value>5</value>
+    <value>361</value>
   </data>
   <data name="verticalSplitContainer.TabIndex" type="System.Int32, mscorlib">
     <value>21</value>
@@ -1049,13 +1007,13 @@
     <value>True</value>
   </metadata>
   <data name="$this.AutoScaleDimensions" type="System.Drawing.SizeF, System.Drawing">
-    <value>8, 15</value>
+    <value>7, 12</value>
   </data>
   <data name="$this.ClientSize" type="System.Drawing.Size, System.Drawing">
-    <value>1458, 892</value>
+    <value>1289, 714</value>
   </data>
   <data name="$this.Font" type="System.Drawing.Font, System.Drawing">
-    <value>New Gulim, 9pt</value>
+    <value>새굴림, 9pt</value>
   </data>
   <data name="$this.Icon" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
@@ -1434,9 +1392,6 @@
         AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAwAAAAMAA
         AAA=
 </value>
-  </data>
-  <data name="$this.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>3, 4, 3, 4</value>
   </data>
   <data name="$this.Text" xml:space="preserve">
     <value>GFtp v1.6</value>

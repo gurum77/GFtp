@@ -89,6 +89,9 @@
       <DependentUpon>MainForm.cs</DependentUpon>
     </Compile>
     <Compile Include="GridFileInfo.cs" />
+    <Compile Include="MainForm.EventHandler.cs">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="MainForm.FileController.cs">
       <SubType>Form</SubType>
     </Compile>

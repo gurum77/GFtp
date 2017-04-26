@@ -52,14 +52,14 @@ namespace GFtp
         public MainForm()
         {
             InitializeComponent();
+            InitializeEventHandler();
             InitControl();
 
-            fileGridView.DoubleClick += FileGridView_DoubleClick;
-            ftpFileGridView.DoubleClick += ftpFileGridView_DoubleClick;
+            
 
             favoritesTreeView.LoadFavoritesItems(_favorites);
             favoritesTreeView.RefreshFavoritesItems(_favorites);
-            favoritesTreeView.AfterSelect += favoritesTreeView_AfterSelect;
+            
         }
 
         // Call when select node of FavoriteTreeView
@@ -78,6 +78,10 @@ namespace GFtp
             portTextBox.Text = item.Port;
             idTextBox.Text = item.ID;
             passwordTextBox.Text = item.Password;
+            if (item.PassiveMode == "true")
+                passiveModeCheckBox.CheckState = CheckState.Checked;
+            else
+                passiveModeCheckBox.CheckState = CheckState.Unchecked;
         }
         
         void ftpFileGridView_DoubleClick(object sender, EventArgs e)
@@ -153,7 +157,7 @@ namespace GFtp
         void DefaultFieldValue()
         {
             CurrentDirectory = Directory.GetCurrentDirectory();
-            _ftpController.Init(@"ftp://ftp.novell.com", 21, "", usePassiveCheckBox.Checked, "", "", null);
+            _ftpController.Init(@"ftp://ftp.novell.com", 21, "", passiveModeCheckBox.Checked, "", "", null);
         }
 
         // Display default field value to controls.
@@ -298,7 +302,7 @@ namespace GFtp
 
             }
            
-            _ftpController.Init(ftpAddressTextBox.Text, port, pathTextBox.Text, usePassiveCheckBox.Checked, idTextBox.Text, passwordTextBox.Text, null);
+            _ftpController.Init(ftpAddressTextBox.Text, port, pathTextBox.Text, passiveModeCheckBox.Checked, idTextBox.Text, passwordTextBox.Text, null);
             
             // Connet to the ftp and get all file list.
             RefreshFtpFileGridView();
